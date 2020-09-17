@@ -8,5 +8,11 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <form action="acount.jsp" method="post">
+            Usuario: <input type="text" name="usuario"><br>
+            Password:<input type="password" name="password"><br>
+            <input type="submit" name="enviar" value="Ingresar">
+        </form>
+        
     </body>
 </html>
