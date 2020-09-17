@@ -1,5 +1,4 @@
-package DBManage;
-
+package com.hospital.proyecto2.DBManage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

@@ -1,5 +1,5 @@
 <%@page import="java.sql.*"%>
-<%@page import="DBManage.*" %>
+<%@page import="com.hospital.proyecto2.DBManage.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,13 +10,13 @@
     <body>
         <h1>Hello World!</h1>
         <% 
+            
             String user = request.getParameter("usuario");
             String pass = request.getParameter("password");
             String mensaje="";
-            Connection cnx=null;
             try {
-                ConnectionDB conec = new ConnectionDB();
-                cnx=conec.getConexion();
+                ConnectionDB cnx = new ConnectionDB();
+                mensaje="La conexion fue un exito";
                 
             } catch (Exception e) {
                 mensaje=e.getClass().toString();
@@ -24,7 +24,7 @@
         %>
         Usuario: <%=user%><br>
         Password: <%=pass%><br>
-        Connexion: <%=mensaje%>
+        Connexion: <%=mensaje%><br>
         <a href="index.jsp">Volver a pagina principal</a>
     </body>
 </html>
