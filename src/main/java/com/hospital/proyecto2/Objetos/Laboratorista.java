@@ -4,7 +4,7 @@ package com.hospital.proyecto2.Objetos;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Laboratorista extends Persona{
+public class Laboratorista extends Trabajador{
     private String registro;
     private String examen;
     private ArrayList<String> dias = new ArrayList<>();
@@ -82,7 +82,7 @@ public class Laboratorista extends Persona{
 
     @Override
     public String toString() {
-        return "Laboratorista{" + "codigo=" + this.getCodigo() + ", DPI=" + this.getDPI() + ", nombre=" + this.getNombre() + ", password=" + this.getPassword() + "registro=" + registro + ", examen=" + examen + ", dias=" + dias + ", inicioTrabajo=" + inicioTrabajo + '}';
+        return "Laboratorista{" + "codigo=" + this.getCodigo() + ", DPI=" + this.getDPI() + ", nombre=" + this.getNombre() + ", password=" + this.getPassword() + ", registro=" + registro + ", examen=" + examen + ", dias=" + dias + ", inicioTrabajo=" + inicioTrabajo + '}';
     }
     
 }

@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
-public class Doctor extends Persona{
+public class Doctor extends Trabajador{
     private String colegiado;
     private ArrayList<String> especialidad= new ArrayList();
     private Time inicio;
@@ -96,7 +96,7 @@ public class Doctor extends Persona{
 
     @Override
     public String toString() {
-        return "Doctor{" + "codigo=" + this.getCodigo() + ", DPI=" + this.getDPI() + ", nombre=" + this.getNombre() + ", password=" + this.getPassword() + "colegiado=" + colegiado + ", telefono=" + this.getTelefono() + ", especialidad=" + especialidad + ", correo=" + this.getCorreo() + ", inicio=" + inicio + ", fin=" + fin + ", inicioTrabajo=" + inicioTrabajo + '}';
+        return "Doctor{" + "codigo=" + this.getCodigo() + ", DPI=" + this.getDPI() + ", nombre=" + this.getNombre() + ", password=" + this.getPassword() + ", colegiado=" + colegiado + ", telefono=" + this.getTelefono() + ", especialidad=" + especialidad + ", correo=" + this.getCorreo() + ", inicio=" + inicio + ", fin=" + fin + ", inicioTrabajo=" + inicioTrabajo + '}';
     }
     
     

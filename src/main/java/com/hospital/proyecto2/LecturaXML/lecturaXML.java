@@ -27,6 +27,11 @@ public class lecturaXML {
             ArrayList<Doctor> doctores = handler.getDoctores();
             ArrayList<Laboratorista> lab = handler.getLaboratoristas();
             ArrayList<Paciente> pacientes = handler.getPacientes();
+            ArrayList<Examen> examenes = handler.getExamenes();
+            ArrayList<Reporte> reportes = handler.getReportes();
+            ArrayList<Resultado> resultados = handler.getResultados();
+            ArrayList<Cita> citas = handler.getCitas();
+            ArrayList<Consulta> consultas = handler.getConsultas();
 
             for(Admin ad:admins){
                 System.out.println(ad.toString());
@@ -39,6 +44,21 @@ public class lecturaXML {
             }
             for(Paciente p:pacientes){
                 System.out.println(p.toString());
+            }
+            for(Examen examen:examenes){
+                System.out.println(examen.toString());
+            }
+            for(Reporte reporte:reportes){
+                System.out.println(reporte.toString());
+            }
+            for(Resultado resultado:resultados){
+                System.out.println(resultado.toString());
+            }
+            for(Cita cita:citas){
+                System.out.println(cita.toString());
+            }
+            for(Consulta consulta:consultas){
+                System.out.println(consulta.toString());
             }
     }
 }

@@ -1,7 +1,7 @@
 
 package com.hospital.proyecto2.Objetos;
 
-public class Persona {
+public class Trabajador {
     
     private String codigo;
     private String nombre;
@@ -10,7 +10,7 @@ public class Persona {
     private String telefono;
     private String correo;
     
-    public Persona() {
+    public Trabajador() {
         
     }
 

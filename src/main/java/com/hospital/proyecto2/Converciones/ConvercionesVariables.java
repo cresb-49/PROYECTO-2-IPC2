@@ -4,6 +4,7 @@ package com.hospital.proyecto2.Converciones;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import javax.swing.text.StyledEditorKit;
 
 /**
  *
@@ -51,9 +52,40 @@ public class ConvercionesVariables {
      * @return 
      */
     public Double stringToDouble(String cadena){
-        Double resultado = null;
+        Double resultado;
+        resultado = null;
         try {
             resultado = Double.parseDouble(cadena);
+        } catch (Exception e) {
+        }
+        return resultado;
+    }
+    /**
+     * Parcea una cadena String a boolean
+     * Si la cadena es valida devolvera un valor diferende de NULL
+     * @param cadena
+     * @return 
+     */
+    public Boolean stringToBoolean(String cadena){
+        Boolean resultado = null;
+            if(cadena.equals("TRUE")){
+                resultado=true;
+            }
+            if(cadena.equals("FAlSE")){
+                resultado=false;
+            }
+        return resultado;
+    }
+    /**
+     * Parcea una cadena String a long
+     * Si la cadena es valida devolvera un valor diferende de NULL
+     * @param cadena
+     * @return 
+     */
+    public Long stringToLong(String cadena){
+        Long resultado = null;
+        try {
+            resultado=Long.parseLong(cadena);
         } catch (Exception e) {
         }
         return resultado;

@@ -11,11 +11,13 @@
         <title>User</title>
     </head>
     <body>
+        
         <header>
             <div class="container">
                 <h1>HOSPITAL</h1>
             </div>
         </header>
+        
         <% 
             
             String user = request.getParameter("usuario");
@@ -29,6 +31,7 @@
                 mensaje=e.getClass().toString();
             }
         %>
+        
         Usuario: <%=user%><br>
         Password: <%=pass%><br>
         Connexion: <%=mensaje%><br>

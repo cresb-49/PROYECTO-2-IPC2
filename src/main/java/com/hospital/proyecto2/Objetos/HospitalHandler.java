@@ -23,6 +23,11 @@ public class HospitalHandler extends DefaultHandler{
     private ArrayList<Doctor> doctores = new ArrayList();
     private ArrayList<Laboratorista> laboratoristas = new ArrayList<>();
     private ArrayList<Paciente> pacientes = new ArrayList<>();
+    private ArrayList<Examen> examenes = new ArrayList<>();
+    private ArrayList<Reporte> reportes = new ArrayList<>();
+    private ArrayList<Resultado> resultados = new ArrayList<>();
+    private ArrayList<Cita> citas = new ArrayList<>();
+    private ArrayList<Consulta> consultas = new ArrayList<>();
     private Object objeto;
     
     private StringBuilder buffer = new StringBuilder();
@@ -36,10 +41,6 @@ public class HospitalHandler extends DefaultHandler{
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
          switch(qName){
-            case "hospital":
-                break;
-            case "admin":
-                break;
             case "CODIGO":
                 asignarCodigo();
                 break;
@@ -90,10 +91,8 @@ public class HospitalHandler extends DefaultHandler{
                 }
                 break;
             case "EXAMEN":
-                if(objeto instanceof Laboratorista){
-                    Laboratorista lab = (Laboratorista) objeto;
-                    lab.setExamen(buffer.toString());
-                }
+                asignarExamen();
+                
                 break;
             case "DIA":
                 if(objeto instanceof Laboratorista){
@@ -125,15 +124,55 @@ public class HospitalHandler extends DefaultHandler{
                     paciente.setSangre(buffer.toString());
                 }
                 break;
+            case "ORDEN":
+                asignarOrden();
+                break;
+            case "DESCRIPCION":
+                if(objeto instanceof Examen){
+                    Examen examen = (Examen) objeto;
+                    examen.setDescripcion(buffer.toString());
+                }
+                break;
+            case "COSTO":
+                asignarCosto();
+                break;
+            case "INFORME":
+                asignarInforme();
+                break;
+            case "PACIENTE":
+                asignarPaciente();
+                break;
+            case "MEDICO":
+                asignarMedico();
                 
+                break;
+            case "FECHA":
+                asignarFecha();
+                break;
+            case "HORA":
+                asignarHora();
+                break;
+            case "LABORATORISTA":
+                if(objeto instanceof Resultado){
+                    Resultado resultado = (Resultado) objeto;
+                    resultado.setCodigoLaboratorista(buffer.toString());
+                }
+                break;
+            case "TIPO":
+                if(objeto instanceof Consulta){
+                    Consulta consulta = (Consulta) objeto;
+                    consulta.setTipo(buffer.toString());
+                }
+                break;
+            default:
+                objeto=null;
+                break;
         }
     }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         switch(qName){
-            case "hospital":
-                break;
             case "admin":
                 objeto=new Admin();
                 admins.add((Admin) objeto);
@@ -150,84 +189,80 @@ public class HospitalHandler extends DefaultHandler{
                 objeto = new Paciente();
                 pacientes.add((Paciente) objeto);
                 break;
-            case "CODIGO":
-                buffer.delete(0, buffer.length());
+            case "examen":
+                objeto= new Examen();
+                examenes.add((Examen) objeto);
                 break;
-            case "DPI":
-                buffer.delete(0, buffer.length());
+            case "reporte":
+                objeto = new Reporte();
+                reportes.add((Reporte) objeto);
                 break;
-            case "NOMBRE":
-                buffer.delete(0, buffer.length());
+            case "resultado":
+                objeto = new Resultado();
+                resultados.add((Resultado)objeto);
                 break;
-            case "PASSWORD":
-                buffer.delete(0, buffer.length());
+            case "cita":
+                objeto = new Cita();
+                citas.add((Cita)objeto);
                 break;
-            case "COLEGIADO":
-                buffer.delete(0, buffer.length());
+            case "consulta":
+                objeto=new Consulta();
+                consultas.add((Consulta)objeto);
                 break;
-            case "TELEFONO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "ESPECIALIDAD":
-                buffer.delete(0, buffer.length());
-                break;
-            case "TITULO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "CORREO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "HORARIO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "INICIO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "FIN":
-                buffer.delete(0, buffer.length());
-                break;
-            case "TRABAJO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "REGISTRO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "EXAMEN":
-                buffer.delete(0, buffer.length());
-                break;
-            case "DIA":
-                buffer.delete(0, buffer.length());
-            case "SEXO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "BIRTH":
-                buffer.delete(0, buffer.length());
-                break;
-            case "PESO":
-                buffer.delete(0, buffer.length());
-                break;
-            case "SANGRE":
+            default:
                 buffer.delete(0, buffer.length());
                 break;
         }
     }
     private void asignarCodigo(){
-        if(objeto instanceof Persona){
-            Persona persona = (Persona) objeto;
-            persona.setCodigo(buffer.toString());
+        if(objeto instanceof Trabajador){
+            Trabajador trabajador = (Trabajador) objeto;
+            trabajador.setCodigo(buffer.toString());
+        }
+        if(objeto instanceof Paciente){
+            Paciente paciente = (Paciente) objeto;
+            paciente.setCodigo(this.conv.stringToLong(buffer.toString()));
+        }
+        if(objeto instanceof Examen){
+            Examen examen = (Examen) objeto;
+            examen.setCodigo(this.conv.stringToLong(buffer.toString()));
+        }
+        if(objeto instanceof Reporte){
+            Reporte reporte = (Reporte) objeto;
+            reporte.setCodigo(buffer.toString());
+        }
+        if(objeto instanceof Resultado){
+            Resultado resultado= (Resultado) objeto;
+            resultado.setCodigo(this.conv.stringToLong(buffer.toString()));
+        }
+        if(objeto instanceof Cita){
+            Cita cita = (Cita) objeto;
+            cita.setCodigo(this.conv.stringToLong(buffer.toString()));
         }
         
     }
     private void asignarDPI(){
-        if(objeto instanceof Persona){
-            Persona persona = (Persona) objeto;
-            persona.setDPI(buffer.toString());
+        if(objeto instanceof Trabajador){
+            Trabajador trabajador = (Trabajador) objeto;
+            trabajador.setDPI(buffer.toString());
+        }
+        if(objeto instanceof Paciente){
+            Paciente paciente = (Paciente) objeto;
+            paciente.setDPI(buffer.toString());
         }
     }
     private void asignarNombre(){
-        if(objeto instanceof Persona){
-            Persona persona = (Persona) objeto;
-            persona.setNombre(buffer.toString());
+        if(objeto instanceof Trabajador){
+            Trabajador trabajador = (Trabajador) objeto;
+            trabajador.setNombre(buffer.toString());
+        }
+        if(objeto instanceof Examen){
+            Examen examen = (Examen) objeto;
+            examen.setNombre(buffer.toString());
+        }
+        if(objeto instanceof Paciente){
+            Paciente paciente = (Paciente) objeto;
+            paciente.setNombre(buffer.toString());
         }
     }
     public ArrayList<Admin> getAdmins() {
@@ -235,24 +270,36 @@ public class HospitalHandler extends DefaultHandler{
     }    
 
     private void asignarPassword() {
-        if(objeto instanceof Persona){
-            Persona persona = (Persona) objeto;
-            persona.setPassword(buffer.toString());
+        if(objeto instanceof Trabajador){
+            Trabajador trabajador = (Trabajador) objeto;
+            trabajador.setPassword(buffer.toString());
+        }
+        if(objeto instanceof Paciente){
+            Paciente paciente = (Paciente) objeto;
+            paciente.setPassword(buffer.toString());
         }
     }
     private void asignarTelefono(){
-        if(objeto instanceof Persona){
-            Persona persona = (Persona) objeto;
-            persona.setTelefono(buffer.toString());
+        if(objeto instanceof Trabajador){
+            Trabajador trabajador = (Trabajador) objeto;
+            trabajador.setTelefono(buffer.toString());
+        }
+        if(objeto instanceof Paciente){
+            Paciente paciente = (Paciente) objeto;
+            paciente.setTelefono(buffer.toString());
         }
     }
 
     private void asignarCorreo() {
-        if(objeto instanceof Persona){
+        if(objeto instanceof Trabajador){
             if(!(objeto instanceof Admin)){
-                Persona persona = (Persona) objeto;
-                persona.setCorreo(buffer.toString());
+                Trabajador trabajador = (Trabajador) objeto;
+                trabajador.setCorreo(buffer.toString());
             }
+        }
+        if(objeto instanceof Paciente){
+            Paciente paciente = (Paciente) objeto;
+            paciente.setCorreo(buffer.toString());
         }
     }
     private void convercionHora(String tipo){
@@ -292,5 +339,130 @@ public class HospitalHandler extends DefaultHandler{
     public ArrayList<Paciente> getPacientes() {
         return pacientes;
     }
+
+    public ArrayList<Examen> getExamenes() {
+        return examenes;
+    }
+
+    private void asignarInforme() {
+        if(objeto instanceof Examen){
+            Examen examen = (Examen) objeto;
+            examen.setInforme(buffer.toString());
+        }
+        if(objeto instanceof Reporte){
+            Reporte reporte = (Reporte) objeto;
+            reporte.setInformeMedico(buffer.toString());
+        }
+        if(objeto instanceof Resultado){
+            Resultado resultado= (Resultado) objeto;
+            resultado.setInforme(buffer.toString());
+        }
+    }
+
+    public ArrayList<Reporte> getReportes() {
+        return reportes;
+    }
+
+    private void asignarPaciente() {
+        if(objeto instanceof Reporte){
+            Reporte reporte = (Reporte) objeto;
+            reporte.setCodigoPaciente(buffer.toString());
+        }
+        if(objeto instanceof Resultado){
+            Resultado resultado= (Resultado) objeto;
+            resultado.setCodigoPaciente(this.conv.stringToLong(buffer.toString()));
+        }
+        if(objeto instanceof Cita){
+            Cita cita = (Cita) objeto;
+            cita.setCodigoPaciente(this.conv.stringToLong(buffer.toString()));
+        }
+    }
+
+    private void asignarExamen() {
+        if(objeto instanceof Laboratorista){
+            Laboratorista lab = (Laboratorista) objeto;
+            lab.setExamen(buffer.toString());
+        }
+        if(objeto instanceof Resultado){
+            Resultado resultado= (Resultado) objeto;
+            resultado.setCodigoExamen(this.conv.stringToLong(buffer.toString()));
+        }
+    }
+
+    private void asignarOrden() {
+        if(objeto instanceof Examen){
+            Examen examen = (Examen) objeto;
+            examen.setOrden(this.conv.stringToBoolean(buffer.toString()));
+        }
+        if(objeto instanceof Resultado){
+            Resultado resultado= (Resultado) objeto;
+            resultado.setOrden(buffer.toString());
+        }
+    }
+
+    private void asignarFecha() {
+        if(objeto instanceof Reporte){
+            Reporte reporte = (Reporte) objeto;
+            reporte.setFecha(this.conv.stringToDate(buffer.toString()));
+        }
+        if(objeto instanceof Resultado){
+            Resultado resultado= (Resultado) objeto;
+            resultado.setFecha(this.conv.stringToDate(buffer.toString()));
+        }
+        if(objeto instanceof Cita){
+            Cita cita = (Cita) objeto;
+            cita.setFecha(this.conv.stringToDate(buffer.toString()));
+        }
+    }
+
+    private void asignarHora() {
+        if(objeto instanceof Reporte){
+            Reporte reporte = (Reporte) objeto;
+            reporte.setHora(this.conv.stringToTime(buffer.toString()));
+        }
+        if(objeto instanceof Resultado){
+            Resultado resultado= (Resultado) objeto;
+            resultado.setHora(this.conv.stringToTime(buffer.toString()));
+        }
+        if(objeto instanceof Cita){
+            Cita cita = (Cita) objeto;
+            cita.setHora(this.conv.stringToTime(buffer.toString()));
+        }
+    }
+
+    public ArrayList<Resultado> getResultados() {
+        return resultados;
+    }
+
+    private void asignarMedico() {
+        if(objeto instanceof Reporte){
+            Reporte reporte = (Reporte) objeto;
+            reporte.setCodigoMedico(buffer.toString());
+        }
+        if(objeto instanceof Cita){
+            Cita cita = (Cita) objeto;
+            cita.setCodigoMedico(buffer.toString());
+        }
+    }
+
+    private void asignarCosto() {
+        if(objeto instanceof Examen){
+            Examen examen = (Examen) objeto;
+            examen.setCosto(this.conv.stringToDouble(buffer.toString()));
+        }
+        if(objeto instanceof Consulta){
+            Consulta consulta = (Consulta) objeto;
+            consulta.setCosto(this.conv.stringToDouble(buffer.toString()));
+        }
+    }
+
+    public ArrayList<Cita> getCitas() {
+        return citas;
+    }
+
+    public ArrayList<Consulta> getConsultas() {
+        return consultas;
+    }
+    
     
 }
