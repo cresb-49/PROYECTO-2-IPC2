@@ -32,6 +32,8 @@ public class lecturaXML {
             ArrayList<Resultado> resultados = handler.getResultados();
             ArrayList<Cita> citas = handler.getCitas();
             ArrayList<Consulta> consultas = handler.getConsultas();
+            
+            Hospital hospital=new Hospital(admins, doctores, lab, pacientes, examenes, reportes, resultados, citas, consultas);
 
             for(Admin ad:admins){
                 System.out.println(ad.toString());
@@ -60,5 +62,7 @@ public class lecturaXML {
             for(Consulta consulta:consultas){
                 System.out.println(consulta.toString());
             }
+            System.out.println(hospital.toString());
+            
     }
 }

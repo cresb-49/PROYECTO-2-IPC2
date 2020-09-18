@@ -463,6 +463,4 @@ public class HospitalHandler extends DefaultHandler{
     public ArrayList<Consulta> getConsultas() {
         return consultas;
     }
-    
-    
 }
