@@ -5,7 +5,7 @@
  */
 package com.hospital.proyecto2.Objetos;
 
-import com.hospital.proyecto2.ConvercionesDeTiempo.ConvercionesFechaTiempo;
+import com.hospital.proyecto2.Converciones.*;
 
 import java.util.ArrayList;
 
@@ -18,10 +18,11 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author benjamin
  */
 public class HospitalHandler extends DefaultHandler{
-    private ConvercionesFechaTiempo conv = new ConvercionesFechaTiempo();
+    private ConvercionesVariables conv = new ConvercionesVariables();
     private ArrayList<Admin> admins = new ArrayList();
     private ArrayList<Doctor> doctores = new ArrayList();
     private ArrayList<Laboratorista> laboratoristas = new ArrayList<>();
+    private ArrayList<Paciente> pacientes = new ArrayList<>();
     private Object objeto;
     
     private StringBuilder buffer = new StringBuilder();
@@ -100,6 +101,31 @@ public class HospitalHandler extends DefaultHandler{
                     lab.agregarDia(buffer.toString());
                 }
                 break;
+            case "SEXO":
+                if(objeto instanceof Paciente){
+                    Paciente paciente = (Paciente) objeto;
+                    paciente.setSexo(buffer.toString());
+                }
+                break;
+            case "BIRTH":
+                if(objeto instanceof Paciente){
+                    Paciente paciente = (Paciente) objeto;
+                    paciente.setCumple(this.conv.stringToDate(buffer.toString()));
+                }
+                break;
+            case "PESO":
+                if(objeto instanceof Paciente){
+                    Paciente paciente = (Paciente) objeto;
+                    paciente.setPeso(this.conv.stringToDouble(buffer.toString()));
+                }
+                break;
+            case "SANGRE":
+                if(objeto instanceof Paciente){
+                    Paciente paciente = (Paciente) objeto;
+                    paciente.setSangre(buffer.toString());
+                }
+                break;
+                
         }
     }
 
@@ -119,6 +145,11 @@ public class HospitalHandler extends DefaultHandler{
             case "laboratorista":
                 objeto = new Laboratorista();
                 laboratoristas.add((Laboratorista)objeto);
+                break;
+            case "paciente":
+                objeto = new Paciente();
+                pacientes.add((Paciente) objeto);
+                break;
             case "CODIGO":
                 buffer.delete(0, buffer.length());
                 break;
@@ -165,6 +196,17 @@ public class HospitalHandler extends DefaultHandler{
                 buffer.delete(0, buffer.length());
                 break;
             case "DIA":
+                buffer.delete(0, buffer.length());
+            case "SEXO":
+                buffer.delete(0, buffer.length());
+                break;
+            case "BIRTH":
+                buffer.delete(0, buffer.length());
+                break;
+            case "PESO":
+                buffer.delete(0, buffer.length());
+                break;
+            case "SANGRE":
                 buffer.delete(0, buffer.length());
                 break;
         }
@@ -245,6 +287,10 @@ public class HospitalHandler extends DefaultHandler{
 
     public ArrayList<Laboratorista> getLaboratoristas() {
         return laboratoristas;
+    }
+
+    public ArrayList<Paciente> getPacientes() {
+        return pacientes;
     }
     
 }

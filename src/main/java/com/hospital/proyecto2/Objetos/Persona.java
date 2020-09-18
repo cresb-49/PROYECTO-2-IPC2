@@ -61,4 +61,5 @@ public class Persona {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    
 }

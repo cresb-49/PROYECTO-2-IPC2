@@ -1,8 +1,4 @@
-
-<%@page import="com.hospital.proyecto2.Objetos.hospital"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.hospital.proyecto2.Objetos.admin"%>
-<%@page import="com.hospital.proyecto2.LecturaXML.*"%>
+<%@page import="com.hospital.proyecto2.LecturaXML.lecturaXML"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,15 +9,12 @@
     <body>
         <h1>Hello World!</h1>
         <%
-            hospital hos=new hospital();
+            lecturaXML xml = new lecturaXML();
             try {
-                lecturaXML leer = new lecturaXML();
-                hos=leer.leerXML();
+                xml.leer();
             } catch (Exception e) {
                 out.write(e.getMessage());
             }
-            out.write(hos.getAdmins().size());
-            
         %>
         <form action="acount.jsp" method="post">
             Usuario: <input type="text" name="usuario"><br>

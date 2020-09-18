@@ -1,5 +1,9 @@
-/media/benjamin/DATOS/PROYECTOS IPC2/PROYECTO 2/PROYECTO -2/PROYECTO2/src/main/java/com/hospital/proyecto2/LecturaXML/lecturaXML.java
-/media/benjamin/DATOS/PROYECTOS IPC2/PROYECTO 2/PROYECTO -2/PROYECTO2/src/main/java/com/hospital/proyecto2/DBManage/ConnectionDB.java
-/media/benjamin/DATOS/PROYECTOS IPC2/PROYECTO 2/PROYECTO -2/PROYECTO2/src/main/java/com/hospital/proyecto2/Objetos/admin.java
-/media/benjamin/DATOS/PROYECTOS IPC2/PROYECTO 2/PROYECTO -2/PROYECTO2/src/main/java/com/hospital/proyecto2/Objetos/hospital.java
-/media/benjamin/DATOS/PROYECTOS IPC2/PROYECTO 2/PROYECTO -2/PROYECTO2/src/main/java/com/hospital/proyecto2/Objetos/medico.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Paciente.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/LecturaXML/lecturaXML.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/HospitalHandler.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/DBManage/ConnectionDB.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Converciones/ConvercionesVariables.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Persona.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Admin.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Laboratorista.java
+/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Doctor.java
