@@ -1,3 +1,6 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="com.hospital.proyecto2.DBManage.ConsultasDB"%>
+<%@page import="com.hospital.proyecto2.DBManage.ConnectionDB"%>
 <%@page import="com.hospital.proyecto2.LecturaXML.lecturaXML"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,12 +15,29 @@
     
     <body>
         <%
+            /*
             lecturaXML xml = new lecturaXML();
             try {
                 xml.leer();
             } catch (Exception e) {
                 out.write(e.getMessage());
+            }*/
+            
+            Connection conexion;
+            ConsultasDB consultas = new ConsultasDB();
+            boolean resultado = false;
+            try {
+                ConnectionDB cnx = new ConnectionDB();
+                conexion=cnx.getConexion();
+                consultas= new ConsultasDB(cnx.getConexion());
+                resultado=consultas.comprobarInformacion();
+                
+                cnx.cerrarConexion();
+                
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
+
         %>
         <header>
             <div class="container">
@@ -32,8 +52,12 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                 </article>
+                
                 <div class="container col-md-4">
-                    <form  action="acount.jsp" method="post">
+                    <%
+                        if(resultado){
+                    %>
+                    <form action="acountProcess.jsp" method="post">
                         <h2>Inicio sesion</h2>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>
@@ -47,6 +71,14 @@
                             <button class="btn btn-primary" type="submit" name="enviar" value="Ingresar">Ingresar</button>
                         </div>
                     </form>
+                    <%
+                        }else{
+                    %>
+                    <h2>NO HAY DATOS EN EL SISTEMA DEBE CARGARLOS</h2>
+                    
+                    <%
+                        }
+                    %>
                 </div>
                 
             </section>

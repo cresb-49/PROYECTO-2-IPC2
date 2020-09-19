@@ -69,7 +69,7 @@
                         </div>
                         <div class="container" >
                             <div class="form-group">
-                                <button class="btn btn-primary" type="submit" name="modificar" value="Ingresar">Modificar</button>
+                                <button class="btn btn-danger" type="submit" name="modificar" value="Ingresar">Modificar</button>
                             </div>
                         </div>
                     </form>
@@ -89,10 +89,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label" for="espeDoctor">Especialidad: </label>
-                        <div class="">
-                            <input class="form-control" id="espeDoctor" type="text" name="espeDoctorText" placeholder="Especialidad">
-                        </div>
+                        <label class="control-label" for="espeDoctor">Especialidad: </label><br>
+                        <select class="form-control" name="Especialidad" id="espeDoctor">
+                            <!---<option value="volvo">Volvo</option>---->
+                            
+                        </select>
+                            <!---<input class="form-control" id="espeDoctor" type="text" name="espeDoctorText" placeholder="Especialidad">--->
                     </div>
                     <div class="form-group">
                         <label class="control-label">Horario:</label>
