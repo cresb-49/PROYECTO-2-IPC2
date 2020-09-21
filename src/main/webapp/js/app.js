@@ -1,6 +1,6 @@
 const exprecionesRegulares = {
     nombre:/^[A-Z][a-z]+([\s][A-Z][a-z]+){1,5}$/,
-    correo:/^[a-zA-Z_-]+@[a-zA-z]+\.[a-z]+$/,
+    correo:/^[a-zA-Z0-9_-]+@[a-zA-z]+\.[a-z]+$/,
     telefono:/^[0-9]{8}$/,
     nDpi:/^[0-9]{13}$/,
     numeroEntero:/^[\d]+$/,
