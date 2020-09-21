@@ -1,3 +1,4 @@
+<%@page import="com.hospital.proyecto2.VerificacionContenido.VerificarContenido"%>
 <%@page import="com.hospital.proyecto2.LecturaXML.lecturaXML"%>
 <%@page import="java.util.List"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
@@ -34,10 +35,13 @@
             ServletFileUpload upload = new ServletFileUpload(itemFactory);
             //Partes del archivo
             List<FileItem> partes = upload.parseRequest(request);
-            System.out.println(partes.get(0).getName());
+            
             try {
+                
                 for(FileItem items: partes){
                     File file = new File(srcGuardado, items.getName());
+                    VerificarContenido verificacion = new VerificarContenido();
+                    verificacion.archivoXML(file);
                     items.write(file);
                 }
                 %>
