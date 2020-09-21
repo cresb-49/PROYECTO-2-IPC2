@@ -16,10 +16,10 @@ public class lecturaXML {
     public lecturaXML(){
         
     }
-    public void leer() throws ParserConfigurationException, SAXException, IOException{
+    public void leer(File archivo) throws ParserConfigurationException, SAXException, IOException{
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = saxParserFactory.newSAXParser();
-            File archivo = new File("/home/benjamin/Escritorio/data.xml");
+            //File archivo = new File("/home/benjamin/Escritorio/data.xml");
             HospitalHandler handler = new HospitalHandler();
             saxParser.parse(archivo, handler);
 
