@@ -14,7 +14,7 @@ public class Laboratorista extends Trabajador{
      * COSNTRUCTOR VACIO DE LA CLASE LABORATORISTA
      */
     public Laboratorista(){
-        
+        this.setRol("laboratorista");
     }
     /**
      * Retorna el registro de salud del laboratorista

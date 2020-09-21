@@ -25,7 +25,7 @@ function validarRegistroPaciente(){
     fecha=document.getElementById("fechaNacimiento").value;
        
     if(nombre === ""||DPI===""||telefono===""||peso===""||correo===""||password ===""|| password2===""){
-        alert("Todos los campos son obligatorios"+fecha);
+        alert("Todos los campos son obligatorios");
         return false;
     }
     else if(nombre.length>60){
@@ -78,6 +78,3 @@ function validarRegistroPaciente(){
     return true;
 }
 
-function validarLogin(){
-    
-}

@@ -4,7 +4,7 @@ package com.hospital.proyecto2.Objetos;
 public class Admin extends Trabajador{
     
     public Admin(){
-        
+        this.setRol("admin");
     }
     @Override
     public String toString() {

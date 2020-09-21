@@ -21,6 +21,32 @@ public class Paciente{
     public Paciente(){
         
     }
+    /**
+     * CONSTRUCTOR DE PACIENTE CON ATRIBUTOS
+     * @param codigo
+     * @param nombre
+     * @param DPI
+     * @param password
+     * @param telefono
+     * @param correo
+     * @param sexo
+     * @param cumple
+     * @param peso
+     * @param sangre 
+     */
+    public Paciente(String nombre, String DPI, String password, String telefono, String correo, String sexo, Date cumple, Double peso, String sangre) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.DPI = DPI;
+        this.password = password;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.sexo = sexo;
+        this.cumple = cumple;
+        this.peso = peso;
+        this.sangre = sangre;
+    }
+    
 
     public Long getCodigo() {
         return codigo;

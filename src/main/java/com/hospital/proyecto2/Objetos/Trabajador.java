@@ -9,6 +9,7 @@ public class Trabajador {
     private String password;
     private String telefono;
     private String correo;
+    private String rol;
     
     public Trabajador() {
         
@@ -60,6 +61,14 @@ public class Trabajador {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
     
 }

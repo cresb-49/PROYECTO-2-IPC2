@@ -13,7 +13,7 @@ public class Doctor extends Trabajador{
     private Date inicioTrabajo;
     
     public Doctor(){
-        
+        this.setRol("doctor");
     }
       
     /**

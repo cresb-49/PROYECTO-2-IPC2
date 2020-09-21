@@ -9,3 +9,8 @@ footer{
 .main{
     background: #cfdaec;
 }
+
+.error{
+    background: #f74e2a;
+    color:#fff;
+}

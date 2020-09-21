@@ -52,4 +52,49 @@ public class ConsultasDB {
         }
         return respuesta;
     }
+    /**
+     * VERIFICA SI EXISTE UN YA EXISTE UN USUARIO EN LA BASE DE DATOS
+     * ,true = si existe,
+     * false = no existe
+     * @param usuario
+     * @return 
+     */
+    public boolean existenciaDeRegistroUsuario(String usuario){
+        boolean respuesta= false;
+        String consulta = "SELECT rol FROM USUARIO WHERE usuario = ?";
+        try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
+            preSt.setString(1, usuario);
+            try (ResultSet result = preSt.executeQuery()){
+                while (result.next()) {
+                    respuesta=true;
+                }
+            } catch (Exception e) {
+            }
+        }catch(Exception e){
+        }
+        return respuesta;
+    }
+    /**
+     * VERIFICA SI EXISTE UN YA EXISTE UN USUARIO EN LA BASE DE DATOS
+     * ,true = si existe,
+     * false = no existe
+     * @param usuario
+     * @return 
+     */
+    public boolean existenciaDePaciente(String dpi){
+        boolean respuesta= false;
+        String consulta = "SELECT codigo FROM PACIENTE WHERE dpi = ?";
+        try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
+            preSt.setString(1, dpi);
+            try (ResultSet result = preSt.executeQuery()){
+                while (result.next()) {
+                    respuesta=true;
+                }
+            } catch (Exception e) {
+            }
+        }catch(Exception e){
+        }
+        return respuesta;
+    }
+    
 }
