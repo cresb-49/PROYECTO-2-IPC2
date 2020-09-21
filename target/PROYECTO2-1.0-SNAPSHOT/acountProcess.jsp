@@ -17,6 +17,8 @@
         <%
             String user = request.getParameter("usuario");
             String pass = request.getParameter("password");
+            String token = request.getParameter("resgistrar");
+            System.out.println("Token: "+token);
             System.out.println("Usuario: "+user+" Password: "+pass);
             try {
                 ConnectionDB cnx = new ConnectionDB();

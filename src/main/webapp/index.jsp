@@ -57,7 +57,7 @@
                     <%
                         if(resultado){
                     %>
-                    <form action="acountProcess.jsp" method="post">
+                    <form action="acountProcess.jsp" method="post" onsubmit="return validarLogin()">
                         <h2>Inicio sesion</h2>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>
@@ -68,7 +68,8 @@
                             <input class="form-control" id="password" type="password" name="password">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit" name="enviar" value="Ingresar">Ingresar</button>
+                            <button class="btn btn-success" type="submit" name="enviar" value="Ingresar">Ingresar</button>
+                            <a class="btn btn-primary" name="resgistrar" href="registrarUsuario.jsp">Registrare</a>
                         </div>
                     </form>
                     <%
