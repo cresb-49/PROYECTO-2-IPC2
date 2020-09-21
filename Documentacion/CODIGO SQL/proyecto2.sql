@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS EXAMEN(
     codigo INT NOT NULL AUTO_INCREMENT ,
     nombre VARCHAR (45) NOT NULL ,
     orden TINYINT NOT NULL ,
-    descripcion VARCHAR (100) NOT NULL ,
+    descripcion TEXT NOT NULL ,
     costo DOUBLE NOT NULL ,
     tipo_informe VARCHAR (3) NOT NULL ,
     PRIMARY KEY (codigo),
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS CITA(
 
 CREATE TABLE IF NOT EXISTS REPORTE(
     codigo INT AUTO_INCREMENT  NOT NULL ,
-    informe VARCHAR (45) NOT NULL ,
+    informe TEXT NOT NULL,
     fecha DATE NOT NULL ,
     hora TIME NOT NULL ,
     MEDICO_codigo VARCHAR (45) NOT NULL ,
@@ -153,5 +153,5 @@ CREATE TABLE IF NOT EXISTS REPORTE(
     PRIMARY KEY (codigo),
     FOREIGN KEY (MEDICO_codigo) REFERENCES MEDICO(codigo),
     FOREIGN KEY (PACIENTE_codigo) REFERENCES PACIENTE(codigo),
-    UNIQUE (codigo,informe)
+    UNIQUE (codigo)
 );
