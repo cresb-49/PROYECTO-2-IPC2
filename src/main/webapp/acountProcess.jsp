@@ -23,6 +23,9 @@
             System.out.println("Token: "+token);
             System.out.println("Acction: "+acction);
             System.out.println("Usuario: "+user+" Password: "+pass);
+            if(acction==null){
+                acction="";
+            }
             if(acction.equals("registarUsuario")){
                 try 
                 {
@@ -78,6 +81,12 @@
                     }
                     if(resultado.equals("doctor")){
                         request.getRequestDispatcher("usuarios/perfilDoctor.jsp?usuario="+user).forward(request, response);
+                    }
+                    if(resultado.equals("paciente")){
+                        request.getRequestDispatcher("usuarios/perfilPaciente.jsp?usuario="+user).forward(request, response);
+                    }
+                    if(resultado.equals("laboratorista")){
+                        request.getRequestDispatcher("usuarios/perfilLaboratorista.jsp?usuario="+user).forward(request, response);
                     }
                     cnx.cerrarConexion();
                 } catch (Exception e) {
