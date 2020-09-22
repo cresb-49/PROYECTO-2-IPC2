@@ -7,6 +7,7 @@ public class Cita {
     private Long codigo;
     private Long codigoPaciente;
     private String codigoMedico;
+    private String especialidad;
     private Date fecha;
     private Time hora;
     
@@ -54,9 +55,16 @@ public class Cita {
         this.hora = hora;
     }
 
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
     @Override
     public String toString() {
-        return "Cita{" + "codigo=" + codigo + ", codigoPaciente=" + codigoPaciente + ", codigoMedico=" + codigoMedico + ", fecha=" + fecha + ", hora=" + hora + '}';
+        return "Cita{" + "codigo=" + codigo + ", codigoPaciente=" + codigoPaciente + ", codigoMedico=" + codigoMedico + ", especialidad=" + especialidad + ", fecha=" + fecha + ", hora=" + hora + '}';
     }
-    
 }

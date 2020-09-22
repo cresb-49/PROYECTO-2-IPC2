@@ -9,6 +9,7 @@ public class Resultado {
     private Long codigo;
     private Long codigoPaciente;
     private Long codigoExamen;
+    private String codigoMedico;
     private String codigoLaboratorista;
     private String orden;
     private String informe;
@@ -83,8 +84,16 @@ public class Resultado {
         this.hora = hora;
     }
 
+    public String getCodigoMedico() {
+        return codigoMedico;
+    }
+
+    public void setCodigoMedico(String codigoMedico) {
+        this.codigoMedico = codigoMedico;
+    }
+
     @Override
     public String toString() {
-        return "Resultado{" + "codigo=" + codigo + ", codigoPaciente=" + codigoPaciente + ", codigoExamen=" + codigoExamen + ", codigoLaboratorista=" + codigoLaboratorista + ", orden=" + orden + ", informe=" + informe + ", fecha=" + fecha + ", hora=" + hora + '}';
+        return "Resultado{" + "codigo=" + codigo + ", codigoPaciente=" + codigoPaciente + ", codigoExamen=" + codigoExamen + ", codigoMedico=" + codigoMedico + ", codigoLaboratorista=" + codigoLaboratorista + ", orden=" + orden + ", informe=" + informe + ", fecha=" + fecha + ", hora=" + hora + '}';
     }
 }

@@ -63,6 +63,10 @@ public class HospitalHandler extends DefaultHandler{
                 asignarTelefono();
                 break;
             case "ESPECIALIDAD":
+                if(objeto instanceof Cita){
+                    Cita cita = (Cita) objeto;
+                    cita.setEspecialidad(buffer.toString());
+                }
                 break;
             case "TITULO":
                 if(objeto instanceof Doctor){
@@ -82,7 +86,16 @@ public class HospitalHandler extends DefaultHandler{
                 convercionHora(qName);
                 break;
             case "TRABAJO":
-                asignaInicioTrabajo();
+                if(objeto instanceof Doctor){
+                    Doctor doctor = (Doctor) objeto;
+                    doctor.setInicioTrabajo(this.conv.stringToDate(buffer.toString()));
+                }
+                break;
+            case "TRABAJOF":
+                if(objeto instanceof Laboratorista){
+                    Laboratorista lab = (Laboratorista) objeto;
+                    lab.setInicioTrabajo(this.conv.stringToDate(buffer.toString()));
+                }
                 break;
             case "REGISTRO":
                 if(objeto instanceof Laboratorista){
@@ -92,7 +105,6 @@ public class HospitalHandler extends DefaultHandler{
                 break;
             case "EXAMEN":
                 asignarExamen();
-                
                 break;
             case "DIA":
                 if(objeto instanceof Laboratorista){
@@ -315,17 +327,6 @@ public class HospitalHandler extends DefaultHandler{
                 Doctor doctor = (Doctor) objeto;
                 doctor.setFin(this.conv.stringToTime(buffer.toString()));
             }
-        }
-    }
-
-    private void asignaInicioTrabajo() {
-        if(objeto instanceof Doctor){
-            Doctor doctor = (Doctor) objeto;
-            doctor.setInicioTrabajo(this.conv.stringToDate(buffer.toString()));
-        }
-        if(objeto instanceof Laboratorista){
-            Laboratorista lab = (Laboratorista) objeto;
-            lab.setInicioTrabajo(this.conv.stringToDate(buffer.toString()));
         }
     }
     public ArrayList<Doctor> getDoctores() {

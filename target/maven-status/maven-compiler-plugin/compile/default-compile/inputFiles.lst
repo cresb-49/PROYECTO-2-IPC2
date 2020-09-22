@@ -1,18 +1,20 @@
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/LecturaXML/lecturaXML.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/HospitalHandler.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Examen.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Cita.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/DBManage/ConnectionDB.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/DBManage/RegistroDB.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Converciones/ConvercionesVariables.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Resultado.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Laboratorista.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Reporte.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/VerificacionContenido/VerificarContenido.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Paciente.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Admin.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Trabajador.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/DBManage/ConsultasDB.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Hospital.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Consulta.java
-/home/benjamin/Documentos/IPC 2/PROYECTO 2/PROYECTO-2-IPC2/src/main/java/com/hospital/proyecto2/Objetos/Doctor.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Laboratorista.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\VerificacionContenido\VerificarContenido.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\exepcionesDePrograma\AtributosIncompletos.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\LecturaXML\lecturaXML.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\DBManage\RegistroDB.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Hospital.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Consulta.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\HospitalHandler.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Examen.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\DBManage\ConnectionDB.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\exepcionesDePrograma\FormatoArchivoIncorrecto.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Paciente.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Admin.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\DBManage\ConsultasDB.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Reporte.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Resultado.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Doctor.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Trabajador.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Converciones\ConvercionesVariables.java
+D:\PROYECTOS IPC2\PROYECTO 2\PROYECTO -2\PROYECTO2\src\main\java\com\hospital\proyecto2\Objetos\Cita.java

@@ -78,7 +78,7 @@
                     <h2>NO HAY DATOS EN EL SISTEMA DEBE CARGARLOS</h2>
                     <form action="cargarArchivos/cargarArchivos.jsp" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <input class="form-control-file" type="file" name="selecFile"/>
+                            <input class="form-control-file" type="file" multiple="multiple" name="selecFile"/>
                         </div>
                         <div class="form-group">
                             <input class="btn btn-success" type="submit" value="Cargar Archivo"/>
