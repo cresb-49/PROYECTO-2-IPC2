@@ -61,7 +61,7 @@ public class VerificarContenido {
         if(doctor.getPassword()==null){
             throw new AtributosIncompletos("El doctor no tiene asignado una contraseña de ingreso al sistema");
         }
-        if(!(this.veirificarPassword(doctor.getPassword()))){
+        if(!(this.verificarPassword(doctor.getPassword()))){
             throw new AtributosIncompletos("El doctor no tiene un contraseña para ingresar al sistema");
         }
     }
@@ -94,7 +94,7 @@ public class VerificarContenido {
         if(!(this.validarCorreo(paciente.getCorreo()))){
             throw new AtributosIncompletos("El paciente no tine un correo valido");
         }
-        if(!(this.veirificarPassword(paciente.getPassword()))){
+        if(!(this.verificarPassword(paciente.getPassword()))){
             throw new AtributosIncompletos("El paciente no tine una contrasela para ingresar al sistema");
         }
     }
@@ -123,7 +123,7 @@ public class VerificarContenido {
         if(!(this.validarCorreo(paciente.getCorreo()))){
             throw new AtributosIncompletos("El paciente no tine un correo valido");
         }
-        if(!(this.veirificarPassword(paciente.getPassword()))){
+        if(!(this.verificarPassword(paciente.getPassword()))){
             throw new AtributosIncompletos("El paciente no tine una contrasela para ingresar al sistema");
         }
     }
@@ -146,11 +146,30 @@ public class VerificarContenido {
         if(!(this.validarTexto(laboratorista.getExamen()))){
             throw new AtributosIncompletos("El nombre del examen asignado al laboratorista no el valido");
         }
-        if(!()){
-            throw new AtributosIncompletos("");
+        if(!(this.validarCorreo(laboratorista.getCorreo()))){
+            throw new AtributosIncompletos("El correo del laboratorista no es valido");
+        }
+        if(laboratorista.getDias()==null){
+            throw new AtributosIncompletos("El laboratorista no tiene dias de trabajo");
+        }
+        if(laboratorista.getDias().isEmpty()){
+            throw new AtributosIncompletos("El laboratorista no tiene dias de trabajo");
+        }
+        if(!(laboratorista.getDias().isEmpty())){
+            for(String dia:laboratorista.getDias()){
+                if(!(this.validarDia(dia))){
+                    throw new AtributosIncompletos("El laboratorista tiene error en la definicion de dia de trabajo");
+                }
+            }
+        }
+        if(laboratorista.getInicioTrabajo()==null){
+            throw new AtributosIncompletos("El laboratorista no tine asignado un dia de inicio de labores");
+        }
+        if(!(this.verificarPassword(laboratorista.getPassword()))){
+            throw new AtributosIncompletos("El laboratorista no tiene una password para ingresar al sistema");
         }
     }
-    private boolean veirificarPassword(String password){
+    private boolean verificarPassword(String password){
         if(password==null){
             return false;
         }else if(password.equals("")){
@@ -237,10 +256,15 @@ public class VerificarContenido {
         if(sexo==null){
             return false;
         }
-        if(sexo.equals("Hombre")||sexo.equals("hombre")||sexo.equals("mujer")||sexo.equals("Mujer")){
-            return true;
+        else{
+            sexo=sexo.toLowerCase();
+            if(sexo.equals("hombre")||sexo.equals("mujer")){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        return false;
     }
     private boolean validarPeso(Double peso){
         if(peso==null){
@@ -277,6 +301,20 @@ public class VerificarContenido {
             return false;
         }else{
             return registro.matches("^[S][A][L][U][D][-][0-9]+$");
+        }
+    }
+    
+    private boolean validarDia(String dia){
+        if(dia==null){
+            return false;
+        }else{
+            dia=dia.toLowerCase();
+            if(dia.equals("lunes")||dia.equals("martes")||dia.equals("miercoles")||dia.equals("jueves")||dia.equals("viernes")||dia.equals("sabado")||dia.equals("domingo")){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     }
 }
