@@ -6,12 +6,16 @@ import com.hospital.proyecto2.exepcionesDePrograma.*;
 import java.io.File;
 
 public class VerificarContenido {
-    private static String Expnombre ="^[A-Z][a-z]+([\\s][A-Z][a-z]+){1,5}$";
-    private static String Expcorreo = "^[a-zA-Z0-9_-]+@[a-zA-z]+.[a-z]+$";
+    private static String Expnombre ="^[A-ZÀ-ÿ\\u00d1a-zÀ-ÿ\\u00f1]+([\\s][A-ZÀ-ÿ\\u00d1a-zÀ-ÿ\\u00f1]+){1,5}$";
+    private static String Expcorreo = "^[a-zA-Z0-9_-]+@[a-zA-z]+\\.[a-z]+$";
     private static String Exptelefono="^[0-9]{8}$";
     private static String ExpnDpi= "^[0-9]{13}$";
     private static String ExpnumeroEntero = "^[0-9]+$";
     private static String ExpIntOrDouble ="^(([0-9]+\\.[0-9]+)|([0-9]+))$";
+    private static String ExpNombre = "^[A-ZÀ-ÿ\\u00d1a-z\\u00f1]+$";
+    private static String ExpCodigoMedico = "^[M][E][D][-][0-9]+$";
+    private static String ExpCodigoLabora = "^[L][A][B][-][0-9]+$";
+    private static String ExpCodigoAdmin = "^[A][D][M][I][N][0-9]+$";
     public VerificarContenido(){
         
     }
@@ -108,5 +112,14 @@ public class VerificarContenido {
     
     private static boolean validarNombre(String nombre){
         return nombre.matches(Expnombre);
+    }
+    private static boolean validarCorreo(String correo){
+        return correo.matches(Expcorreo);
+    }
+    private static boolean validarTelefono(String telefono){
+        return telefono.matches(Exptelefono);
+    }
+    private static boolean validadDPI(String DPI){
+        return DPI.matches(ExpnDpi);
     }
 }
