@@ -19,7 +19,6 @@
         </header>
         
         <% 
-            
             String user = request.getParameter("usuario");
             String pass = request.getParameter("password");
             String mensaje="";

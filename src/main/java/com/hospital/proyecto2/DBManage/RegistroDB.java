@@ -84,4 +84,28 @@ public class RegistroDB {
         }
         return respuesta;
     }
+    public boolean registroDoctor(Doctor doctor){
+        boolean respuesta=false;
+        String query ="INSERT INTO MEDICO(codigo,dpi,email,fin_horario,inicio_horario,inicio_labores,nombre,numero_colegiado,telefono)values(?,?,?,?,?,?,?,?,?)";
+        //Asignacion de los datos de la variables
+        try(PreparedStatement preSt = conexion.prepareStatement(query)) {
+            //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+            preSt.setString(1,doctor.getCodigo());
+            preSt.setString(1,doctor.getDPI());
+            preSt.setString(1,doctor.getCorreo());
+            preSt.setTime(1,doctor.getFin());
+            preSt.setTime(1,doctor.getInicio());
+            preSt.setDate(1,doctor.getInicioTrabajo());
+            preSt.setString(1,doctor.getNombre());
+            preSt.setString(1,doctor.getColegiado());
+            preSt.setString(1,doctor.getTelefono());
+            //
+            preSt.executeUpdate();
+            preSt.close();
+        } catch (Exception e) {
+            respuesta=false;
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
 }
