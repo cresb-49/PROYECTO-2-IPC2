@@ -102,7 +102,7 @@ public class Reporte {
 
     @Override
     public String toString() {
-        return "Reporte{" + "codigo=" + codigo + ", codigoPaciente=" + codigoPaciente + ", codigoMedico=" + codigoMedico + ", informeMedico=" + informeMedico + ", fecha=" + fecha + ", hora=" + hora + '}';
+        return "Reporte{" + "codigo=" + codigo + ", codigoPaciente=" + codigoPaciente + ", codigoMedico=" + codigoMedico + ", fecha=" + fecha + ", hora=" + hora + ", informeMedico=" + informeMedico +  '}';
     }
     
 }

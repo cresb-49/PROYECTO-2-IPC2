@@ -444,6 +444,10 @@ public class HospitalHandler extends DefaultHandler{
             Cita cita = (Cita) objeto;
             cita.setCodigoMedico(buffer.toString());
         }
+        if(objeto instanceof Resultado){
+            Resultado resultado = (Resultado) objeto;
+            resultado.setCodigoMedico(buffer.toString());
+        }
     }
 
     private void asignarCosto() {

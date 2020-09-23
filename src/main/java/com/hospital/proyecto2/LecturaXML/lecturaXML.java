@@ -16,7 +16,15 @@ public class lecturaXML {
     public lecturaXML(){
         
     }
-    public void leer(File archivo) throws ParserConfigurationException, SAXException, IOException{
+    /**
+     * La lectura del docuemento XML da como resultado un hopital de forma abstracta
+     * @param archivo
+     * @return
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException 
+     */
+    public Hospital leer(File archivo) throws ParserConfigurationException, SAXException, IOException{
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = saxParserFactory.newSAXParser();
             //File archivo = new File("/home/benjamin/Escritorio/data.xml");
@@ -62,7 +70,6 @@ public class lecturaXML {
             for(Consulta consulta:consultas){
                 System.out.println(consulta.toString());
             }
-            System.out.println(hospital.toString());
-            
+            return hospital;
     }
 }

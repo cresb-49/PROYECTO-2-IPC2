@@ -99,6 +99,6 @@ public class Examen {
 
     @Override
     public String toString() {
-        return "Examen{" + "codigo=" + codigo + ", nombre=" + nombre + ", orden=" + orden + ", descripcion=" + descripcion + ", costo=" + costo + ", informe=" + informe + '}';
+        return "Examen{" + "codigo=" + codigo + ", nombre=" + nombre + ", orden=" + orden + descripcion + ", costo=" + costo + ", descripcion=" + ", informe=" + informe + '}';
     }
 }

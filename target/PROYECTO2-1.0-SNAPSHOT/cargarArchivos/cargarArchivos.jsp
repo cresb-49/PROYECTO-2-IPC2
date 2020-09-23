@@ -37,13 +37,11 @@
             List<FileItem> partes = upload.parseRequest(request);
             
             try {
-                
+                //Escritura de todos los archivos en la entrada de la pagina WEB
                 for(FileItem items: partes){
                     File file = new File(srcGuardado, items.getName());
-                    VerificarContenido verificacion = new VerificarContenido();
-                    verificacion.archivoXML(file);
                     items.write(file);
-                }
+                }                
                 %>
                 <div class="container">
                     <h1>EL ARCHIVO SE A SUBIDO CORRECTAMENTE</h1>
@@ -51,13 +49,21 @@
                     <a class="btn btn-success" href="../index.jsp">Regresar al inicio</a>
                 </div>
                 <%
-                File doc = new File(srcGuardado+"/"+partes.get(0).getName());
-                lecturaXML lectura  = new lecturaXML();
-                lectura.leer(doc);
+                File directorio = new File(srcGuardado);
+                if(directorio.exists()){
+                    File[] ficheros = directorio.listFiles();
+                    for(File f:ficheros){
+                        if(f.getName().endsWith(".xml")){
+                            lecturaXML lectura = new lecturaXML();
+                            lectura.leer(f);
+                        }
+                        
+                    }
+                }
             } catch (Exception e) {
                 %>
                 <div class="container">
-                    <h1>ERROR EN LA CARGA DE ARCHIVO</h1>
+                    <h1>ERROR EN LA CARGA EN BASE DE DATOS</h1>
                     <div class="container alert alert-danger" role="alert"><%out.write(e.getMessage());%></div>
                     <a class="btn btn-danger" href="../index.jsp">Regresar al inicio</a>
                 </div>

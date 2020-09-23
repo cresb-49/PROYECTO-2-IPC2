@@ -68,10 +68,10 @@ public class ConvercionesVariables {
      */
     public Boolean stringToBoolean(String cadena){
         Boolean resultado = null;
-            if(cadena.equals("TRUE")){
+            if(cadena.equals("TRUE")||cadena.equals("true")){
                 resultado=true;
             }
-            if(cadena.equals("FAlSE")){
+            if(cadena.equals("FALSE")||cadena.equals("false")){
                 resultado=false;
             }
         return resultado;
