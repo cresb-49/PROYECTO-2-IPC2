@@ -4,6 +4,7 @@ package com.hospital.proyecto2.VerificacionContenido;
 import com.hospital.proyecto2.Objetos.*;
 import com.hospital.proyecto2.exepcionesDePrograma.*;
 import java.io.File;
+import java.sql.Connection;
 
 public class VerificarContenido {
     public VerificarContenido(){
@@ -18,6 +19,15 @@ public class VerificarContenido {
     public void archivoXML(File archivo)throws FormatoArchivoIncorrecto{
         if(!(archivo.getName().endsWith(".xml"))){
             throw new FormatoArchivoIncorrecto("El archivo de entrada no es .XML");
+        }
+    }
+    
+    public void verificarUsuario(String user,String password,String rol) throws AtributosIncompletos{
+        if(user==null||password==null||rol==null){
+            throw new AtributosIncompletos("El uuario no tiene parametros para el registro");
+        }
+        if(user.equals("")||password.equals("")||rol.equals("")){
+            throw new AtributosIncompletos("El usurio no tiene parametros para el registro");
         }
     }
     public void verificarDoctor(Doctor doctor) throws AtributosIncompletos{
@@ -169,6 +179,24 @@ public class VerificarContenido {
             throw new AtributosIncompletos("El laboratorista no tiene una password para ingresar al sistema");
         }
     }
+    public void verificarAdmin(Admin admin) throws AtributosIncompletos{
+        if(!(this.validarNombre(admin.getNombre()))){
+            throw new AtributosIncompletos("El administrador no tiene asignado un nombre valido debe ser de la forma Juan Perez");
+        }
+        if(!(this.validarCodigoAdmin(admin.getCodigo()))){
+            throw new AtributosIncompletos("El administrador no tiene asignado un codigo de identificacion valido para la base de datos debe ser ADMINXX");
+        }
+        if(!(this.validarDPI(admin.getDPI()))){
+            throw new AtributosIncompletos("El administrador no tiene un numeo de DPI valido debe de tener 13 digitos");
+        }
+        if(admin.getPassword()==null){
+            throw new AtributosIncompletos("El administrador no tiene una contraseña para el ingreso al sistema");
+        }
+        if(admin.getPassword().equals("")){
+            throw new AtributosIncompletos("El administrador no tiene una contraseña para el ingreso al sistema");
+        }
+        
+    }
     private boolean verificarPassword(String password){
         if(password==null){
             return false;
@@ -317,4 +345,5 @@ public class VerificarContenido {
             }
         }
     }
+    
 }

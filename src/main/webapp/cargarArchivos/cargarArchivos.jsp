@@ -1,3 +1,6 @@
+<%@page import="com.hospital.proyecto2.DBManage.RegistroDB"%>
+<%@page import="com.hospital.proyecto2.DBManage.ConnectionDB"%>
+<%@page import="com.hospital.proyecto2.Objetos.Hospital"%>
 <%@page import="com.hospital.proyecto2.VerificacionContenido.VerificarContenido"%>
 <%@page import="com.hospital.proyecto2.LecturaXML.lecturaXML"%>
 <%@page import="java.util.List"%>
@@ -42,6 +45,51 @@
                     File file = new File(srcGuardado, items.getName());
                     items.write(file);
                 }                
+                //Lista de errores al moemnto de la carga del archivo
+                ArrayList<String> errores = new ArrayList<>();
+                //Manejo de la conexion de la base de datos
+                ConnectionDB conexion = new ConnectionDB();
+                //Parte de registro para la base de datos
+                RegistroDB registro = new RegistroDB(conexion.getConexion());
+                //Directorio nonde se guardan los archivos que recibio la pagina web
+                File directorio = new File(srcGuardado);
+                //Generacion del objeto hospital
+                Hospital hospital=null;
+                //Comprobacion si el direcorio existe
+                if(directorio.exists()){
+                    //Cargamos los archivos en el programa
+                    File[] ficheros = directorio.listFiles();
+                    for(File f:ficheros){
+                        if(f.getName().endsWith(".xml")){
+                            lecturaXML lectura = new lecturaXML();
+                            hospital=lectura.leer(f);
+                            errores=registro.trasladarDatosHospital(hospital);
+                        }
+                    }
+                    //Eliminacion de los datos temporales
+                    for(File f:ficheros){
+                        f.delete();
+                    }
+                }
+                if(!errores.isEmpty()){
+                %>
+                <div class="container">
+                    <h1>ERROR EN LA CARGA EN BASE DE DATOS</h1>
+                    <div class="container alert alert-danger" role="alert">
+                        <%
+                            for(String error :errores){
+                        %>
+                        <p><%out.write(error); %></p>
+                        <%
+                            }
+                        %>
+                        
+                    </div>
+                    <a class="btn btn-danger" href="../index.jsp">Regresar al inicio</a>
+                </div>
+                <%
+                    
+                }else{
                 %>
                 <div class="container">
                     <h1>EL ARCHIVO SE A SUBIDO CORRECTAMENTE</h1>
@@ -49,16 +97,6 @@
                     <a class="btn btn-success" href="../index.jsp">Regresar al inicio</a>
                 </div>
                 <%
-                File directorio = new File(srcGuardado);
-                if(directorio.exists()){
-                    File[] ficheros = directorio.listFiles();
-                    for(File f:ficheros){
-                        if(f.getName().endsWith(".xml")){
-                            lecturaXML lectura = new lecturaXML();
-                            lectura.leer(f);
-                        }
-                        
-                    }
                 }
             } catch (Exception e) {
                 %>

@@ -1,8 +1,10 @@
 package com.hospital.proyecto2.DBManage;
 
+import com.hospital.proyecto2.exepcionesDePrograma.RegistroDuplicado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class ConsultasDB {
     Connection conexion;
@@ -38,6 +40,7 @@ public class ConsultasDB {
         String respuesta= null;
         String consulta = "SELECT rol FROM USUARIO WHERE usuario = ? AND password = ?";
         try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
+            password = DigestUtils.md5Hex(password);
             preSt.setString(1, usuario);
             preSt.setString(2, password);
             try (ResultSet result = preSt.executeQuery()){
@@ -96,5 +99,4 @@ public class ConsultasDB {
         }
         return respuesta;
     }
-    
 }

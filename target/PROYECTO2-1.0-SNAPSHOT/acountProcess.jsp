@@ -47,8 +47,8 @@
                     
                     if(!consultas.existenciaDeRegistroUsuario(nuevoPaciente.getCorreo())){
                         if(!consultas.existenciaDePaciente(nuevoPaciente.getDPI())){
-                            registro.registroPaciente(nuevoPaciente);
-                            registro.registroUsuario(nuevoPaciente);
+                            registro.registroPaciente(nuevoPaciente,"nuevo");
+                            registro.registroUsuario(nuevoPaciente, "nuevo");
                             request.getRequestDispatcher("index.jsp").forward(request, response);
                         }
                         else{
