@@ -12,8 +12,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registro</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/estilos.css"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/estilos.css"/>
     </head>
     <body>
         <header>
@@ -30,6 +30,7 @@
             String sexo=null;
             String dpi=null;
             String sangre = null;
+            String correo=null;
             //Objeto paciente
             Paciente paci=null;
             //Resultados de error
@@ -47,6 +48,7 @@
                 sexo=paci.getSexo();
                 dpi=paci.getDPI();
                 sangre=paci.getSangre();
+                correo=paci.getCorreo();
             }
             resultado=request.getParameter("error");
             if(resultado!=null){
@@ -205,7 +207,17 @@
                         <div class="form-group">
                             <label class="" for="correoPaciente">Correo: </label>
                             <div class="">
+                                <%
+                                if(correo==null){
+                                %>
                                 <input class="form-control" id="correoPaciente" type="email" name="correoPaciente" placeholder="Correo">
+                                <%
+                                    }else{
+                                %>
+                                <input class="form-control" id="correoPaciente" type="email" name="correoPaciente" placeholder="Correo" value="<%out.write(correo);%>">
+                                <%
+                                    }
+                                %>
                             </div>
                         </div>
                         <div class="form-group">
@@ -456,13 +468,18 @@
                                                 }
                                             %>
                                 </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="" for="passPacienteVer">Repetir Password: </label>
-                                <div class="">
-                                    <input class="form-control" id="passPacienteVer" type="password" name="passPacienteVer" placeholder="Password">
-                            </div>
-                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="" for="passPacienteVer">Repetir Password: </label>
+                                        <div class="">
+                                            <input class="form-control" id="passPacienteVer" type="password" name="passPacienteVer" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="container" >
+                                    <div class="form-group">
+                                        <a class="btn btn-info" href="../index.jsp">Regresar al inicio</a>
+                                    </div>
+                                </div>
                     </div>
                 </section>
             </form>
@@ -474,10 +491,10 @@
                 <h3>© HOSPITAL 2020</h3>
             </div>
         </footer>
-        <script src="js/precargadoRegistroUsuario.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="../js/precargadoRegistroUsuario.js"></script>
+        <script src="../js/app.js"></script>
+        <script src="../js/jquery-3.5.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>

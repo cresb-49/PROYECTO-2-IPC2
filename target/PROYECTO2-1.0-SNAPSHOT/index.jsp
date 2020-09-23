@@ -15,14 +15,6 @@
     
     <body>
         <%
-            /*
-            lecturaXML xml = new lecturaXML();
-            try {
-                xml.leer();
-            } catch (Exception e) {
-                out.write(e.getMessage());
-            }*/
-            
             Connection conexion;
             ConsultasDB consultas = new ConsultasDB();
             boolean resultado = false;
@@ -48,16 +40,18 @@
         <div class="container">
             <section class="main row">
                 <article class="col-md-4">
+                    <br>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                 </article>
                 
                 <div class="container col-md-4">
+                    <br>
                     <%
                         if(resultado){
                     %>
-                    <form action="acountProcess.jsp" method="post" onsubmit="return validarLogin()">
+                    <form action="ManejoDeCuentas/acountProcess.jsp" method="post" onsubmit="return validarLogin()">
                         <h2>Inicio sesion</h2>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>
@@ -69,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success" type="submit" name="enviar" value="Ingresar">Ingresar</button>
-                            <a class="btn btn-primary" name="resgistrar" href="registrarUsuario.jsp">Registrare</a>
+                            <a class="btn btn-primary" name="resgistrar" href="ManejoDeCuentas/registrarUsuario.jsp">Registrare</a>
                         </div>
                     </form>
                     <%

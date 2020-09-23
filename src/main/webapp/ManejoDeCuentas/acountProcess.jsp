@@ -13,6 +13,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/estilos.css"/>
     </head>
     <body>
         <%
@@ -38,7 +41,6 @@
                             , conv.stringToDate(request.getParameter("fechaNacimiento"))
                             , conv.stringToDouble(request.getParameter("pesoPaciente"))
                             , request.getParameter("tipoSangre"));
-                    //System.out.println(nuevoPaciente.toString());
                     ConnectionDB cnx = new ConnectionDB();
                     RegistroDB registro = new RegistroDB(cnx.getConexion());
                     ConsultasDB consultas = new ConsultasDB(cnx.getConexion());
@@ -48,7 +50,7 @@
                         if(resultado.equals("")){
                             registro.registroPaciente(nuevoPaciente,"nuevo");
                             registro.registroUsuario(nuevoPaciente, "nuevo");
-                            request.getRequestDispatcher("index.jsp").forward(request, response);
+                            response.sendRedirect("/PROYECTO2/index.jsp");
                         }
                         else{
                             request.setAttribute("nuevoPaciente",nuevoPaciente);
@@ -71,21 +73,25 @@
                     ConsultasDB consultas = new ConsultasDB(cnx.getConexion());
                     String resultado=consultas.accesoUsuario(user,pass);
                     if(resultado.equals("admin")){
-                        request.getRequestDispatcher("usuarios/perfilAdmin.jsp?usuario="+user).forward(request, response);
+                        request.getRequestDispatcher("/usuarios/perfilAdmin.jsp?usuario="+user).forward(request, response);
                     }
                     if(resultado.equals("doctor")){
-                        request.getRequestDispatcher("usuarios/perfilDoctor.jsp?usuario="+user).forward(request, response);
+                        request.getRequestDispatcher("/usuarios/perfilDoctor.jsp?usuario="+user).forward(request, response);
                     }
                     if(resultado.equals("paciente")){
-                        request.getRequestDispatcher("usuarios/perfilPaciente.jsp?usuario="+user).forward(request, response);
+                        request.getRequestDispatcher("/usuarios/perfilPaciente.jsp?usuario="+user).forward(request, response);
                     }
                     if(resultado.equals("laboratorista")){
-                        request.getRequestDispatcher("usuarios/perfilLaboratorista.jsp?usuario="+user).forward(request, response);
+                        request.getRequestDispatcher("/usuarios/perfilLaboratorista.jsp?usuario="+user).forward(request, response);
                     }
                     cnx.cerrarConexion();
                 } catch (Exception e) {
+                    response.sendRedirect("/PROYECTO2/index.jsp");
                 }
             }
         %>
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
