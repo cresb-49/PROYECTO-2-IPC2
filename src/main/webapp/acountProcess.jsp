@@ -20,9 +20,7 @@
             String pass = request.getParameter("password");
             String token = request.getParameter("resgistrar");
             String acction = request.getParameter("token");
-            System.out.println("Token: "+token);
-            System.out.println("Acction: "+acction);
-            System.out.println("Usuario: "+user+" Password: "+pass);
+            
             if(acction==null){
                 acction="";
             }
@@ -40,31 +38,27 @@
                             , conv.stringToDate(request.getParameter("fechaNacimiento"))
                             , conv.stringToDouble(request.getParameter("pesoPaciente"))
                             , request.getParameter("tipoSangre"));
-                    System.out.println(nuevoPaciente.toString());
+                    //System.out.println(nuevoPaciente.toString());
                     ConnectionDB cnx = new ConnectionDB();
                     RegistroDB registro = new RegistroDB(cnx.getConexion());
                     ConsultasDB consultas = new ConsultasDB(cnx.getConexion());
-                    
+                    String resultado="";
                     if(!consultas.existenciaDeRegistroUsuario(nuevoPaciente.getCorreo())){
-                        if(!consultas.existenciaDePaciente(nuevoPaciente.getDPI())){
+                            resultado=consultas.existenciaDePaciente(nuevoPaciente.getCodigo(), nuevoPaciente.getDPI(), nuevoPaciente.getCorreo(), nuevoPaciente.getTelefono());
+                        if(resultado.equals("")){
                             registro.registroPaciente(nuevoPaciente,"nuevo");
                             registro.registroUsuario(nuevoPaciente, "nuevo");
                             request.getRequestDispatcher("index.jsp").forward(request, response);
                         }
                         else{
-                            request.getRequestDispatcher("registarUsuario.jsp"+
-                                "?existsR=2").forward(request, response);
+                            request.setAttribute("nuevoPaciente",nuevoPaciente);
+                            request.getRequestDispatcher("registrarUsuario.jsp?error="+resultado).forward(request, response);
                         }
                     }else{
-                        request.getRequestDispatcher("registarUsuario.jsp"+
-                                "?Rnombre="+nuevoPaciente.getNombre()+
-                                "?Rfecha="+nuevoPaciente.getCumple()+
-                                "&RDPI="+nuevoPaciente.getDPI()+
-                                "&Rtelefono="+nuevoPaciente.getTelefono()+
-                                "&Rpeso="+nuevoPaciente.getPeso()+
-                                "&Rsexo="+nuevoPaciente.getSexo()+
-                                "&Rsangre=\""+nuevoPaciente.getSangre()+"\""+
-                                "existsR=1").forward(request, response);
+                        resultado="El correo ya esta registrado";
+                        System.out.println(resultado);
+                        request.setAttribute("nuevoPaciente",nuevoPaciente);
+                        request.getRequestDispatcher("registrarUsuario.jsp?error="+resultado).forward(request, response);
                     }
                     cnx.cerrarConexion();
                 } catch (Exception e) {

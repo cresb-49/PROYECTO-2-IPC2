@@ -175,6 +175,7 @@ public class RegistroDB {
         String respuesta="";
         String query ="INSERT INTO ADMINISTRADOR (codigo,dpi,nombre) VALUES (?,?,?)";
         //Asignacion de los datos de la variables
+        
         try(PreparedStatement preSt = conexion.prepareStatement(query)) {
             //VERIFICACION DE LA INFORMACION DE ENTRADA
             this.verificacion.verificarAdmin(admin);

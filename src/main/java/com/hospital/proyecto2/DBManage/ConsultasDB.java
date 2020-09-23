@@ -81,22 +81,59 @@ public class ConsultasDB {
      * VERIFICA SI EXISTE UN YA EXISTE UN USUARIO EN LA BASE DE DATOS
      * ,true = si existe,
      * false = no existe
-     * @param usuario
+     * @param codigo
+     * @param dpi
+     * @param email
+     * @param telefono
      * @return 
      */
-    public boolean existenciaDePaciente(String dpi){
-        boolean respuesta= false;
-        String consulta = "SELECT codigo FROM PACIENTE WHERE dpi = ?";
+    public String existenciaDePaciente(Long codigo,String dpi,String email,String telefono){
+        String consulta = "SELECT * FROM PACIENTE WHERE codigo = ?";
+        if(codigo!=null){
+            try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
+                preSt.setLong(1, codigo);
+                try (ResultSet result = preSt.executeQuery()){
+                    while (result.next()) {
+                        return "Existe un paciente con el mismo codigo de referencia en la base de datos";
+                    }
+                } catch (Exception e) {
+                }
+            }catch(Exception e){
+            }
+        }
+        consulta = "SELECT * FROM PACIENTE WHERE dpi = ?";
         try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
             preSt.setString(1, dpi);
             try (ResultSet result = preSt.executeQuery()){
                 while (result.next()) {
-                    respuesta=true;
+                    return "Existe un paciente con el mismo DPI en la base de datos";
                 }
             } catch (Exception e) {
             }
         }catch(Exception e){
         }
-        return respuesta;
+        consulta = "SELECT * FROM PACIENTE WHERE email = ?";
+        try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
+            preSt.setString(1, email);
+            try (ResultSet result = preSt.executeQuery()){
+                while (result.next()) {
+                    return "Existe un paciente con el mismo email en la base de datos";
+                }
+            } catch (Exception e) {
+            }
+        }catch(Exception e){
+        }
+        consulta = "SELECT * FROM PACIENTE WHERE telefono = ?";
+        try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
+            preSt.setString(1, telefono);
+            try (ResultSet result = preSt.executeQuery()){
+                while (result.next()) {
+                    return "Existe un paciente con el mismo telefono en la base de datos";
+                }
+            } catch (Exception e) {
+            }
+        }catch(Exception e){
+        }
+        return "";
     }
 }

@@ -37,7 +37,7 @@ CREATE TABLE  IF NOT EXISTS MEDICO(
     fin_horario TIME NOT NULL,
     inicio_labores DATE NOT NULL,
     PRIMARY KEY(codigo),
-    UNIQUE (codigo,dpi,numero_colegiado,email)
+    UNIQUE (codigo,dpi,numero_colegiado,email,telefono)
 
 );
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS PACIENTE(
     tipo_sangre VARCHAR (5) NOT NULL ,
     fecha_nacimiento DATE NOT NULL ,
     PRIMARY KEY (codigo),
-    UNIQUE (codigo,dpi,email)
+    UNIQUE (codigo,dpi,email,telefono)
 );
 
 CREATE TABLE IF NOT EXISTS LABORATORISTA(
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS LABORATORISTA(
     inicio_labores DATE NOT NULL ,
     tipo_examen VARCHAR(45) NOT NULL,
     PRIMARY KEY (codigo),
-    UNIQUE (codigo,dpi,email)
+    UNIQUE (codigo,numero_registro,dpi,email,telefono)
 );
 
 CREATE TABLE IF NOT EXISTS DIAS_TRABAJO(

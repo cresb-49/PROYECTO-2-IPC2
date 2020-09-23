@@ -4,6 +4,7 @@
     Author     : benjamin
 --%>
 
+<%@page import="com.hospital.proyecto2.Objetos.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,28 +22,41 @@
             </div>
         </header>
         <%
-            String event = request.getParameter("existsR");
-            if(event!=null){
-            switch(event){
-                case "1":
-                    %>
-                    <br>
-                    <div class="container alert alert-danger" role="alert">
-                        El correo ya esta registrado
-                    </div>
-                    <%
-                    break;
-                case "2":
-                    %>
-                    <br>
-                    <div class="container alert alert-danger" role="alert">
-                        El paciente ya esta registrado
-                    </div>
-                    <%
-                    break;
-                default:
-                    break;
+            //Atributos del paciente
+            String nombre=null;
+            String fecha=null;
+            String peso=null;
+            String telefono=null;
+            String sexo=null;
+            String dpi=null;
+            String sangre = null;
+            //Objeto paciente
+            Paciente paci=null;
+            //Resultados de error
+            String resultado=null;
+            try {
+                paci = (Paciente)request.getAttribute("nuevoPaciente");
+            } catch (Exception e) {
+                
             }
+            if(paci!=null){
+                nombre=paci.getNombre();
+                fecha=paci.getCumple().toString();
+                peso=paci.getPeso().toString();
+                telefono=paci.getTelefono();
+                sexo=paci.getSexo();
+                dpi=paci.getDPI();
+                sangre=paci.getSangre();
+            }
+            resultado=request.getParameter("error");
+            if(resultado!=null){
+                
+                %>
+                    <br>
+                    <div class="container alert alert-danger" role="alert">
+                        <%System.out.println(resultado);out.write(resultado);%>
+                    </div>
+                <%
             }
         %>
         <div class="container">
@@ -59,7 +73,7 @@
                                 <label for="nombrePaciente" class="">Nombre: </label>
                                 <div class="">
                                     <%
-                                        String nombre=request.getParameter("Rnombre");
+                                        
                                         if(nombre==null){
                                     %>
                                     <input class="form-control" id="nombrePaciente" type="text" name="nombrePaciente" placeholder="Nombre" >
@@ -77,7 +91,6 @@
                                 <label class="" for="fechaNacimiento">Fecha Nacimiento: </label>
                                 <div class="">
                                     <%
-                                        String fecha=request.getParameter("Rfecha");
                                         if(fecha==null){
                                     %>
                                     <input class="form-control" id="fechaNacimiento" type="date" name="fechaNacimiento" value="2000-01-01" min="1950-01-01" >
@@ -94,7 +107,6 @@
                                 <label class="" for="telefonoPaciente">Telefono: </label>
                                 <div class="">
                                     <%
-                                        String telefono=request.getParameter("Rtelefono");
                                         if(telefono==null){
                                     %>
                                     <input class="form-control" id="telefonoPaciente" type="text" name="telefonoPaciente" placeholder="Telefono" >
@@ -111,7 +123,6 @@
                                 <label class="" for="pesoPaciente">Peso (Kg): </label>
                                 <div class="">
                                     <%
-                                        String peso=request.getParameter("Rpeso");
                                         if(peso==null){
                                     %>
                                     <input class="form-control" id="pesoPaciente" type="text" name="pesoPaciente" placeholder="Peso (Kg)">
@@ -141,7 +152,6 @@
                             <label class="" for="sexoPaciente">Sexo: </label><br>
                             <select class="form-control" name="sexoPaciente" id="sexoPaciente">
                                 <%
-                                    String sexo=request.getParameter("Rsexo");
                                     if(sexo!=null){
                                     switch(sexo){
                                         case "Hombre":
@@ -180,7 +190,6 @@
                             <label class="" for="DPIPaciente">DPI: </label>
                             <div class="">
                                 <%
-                                    String dpi=request.getParameter("RDPI");
                                     if(dpi==null){
                                 %>
                                 <input class="form-control" id="DPIPaciente" type="text" name="DPIPaciente" placeholder="DPI">
@@ -203,11 +212,9 @@
                             <label class="" for="tipoSangre">Tipo Sangre: </label><br>
                                 <select class="form-control" name="tipoSangre" id="tipoSangre">
                                     <%
-                                        String sangre = request.getParameter("Rsangre");
-                                        System.out.println(sangre);
                                         if(sangre!=null){
                                         switch(sangre){
-                                            case "\"A\"":
+                                            case "A":
                                                 %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A" selected>A</option>
@@ -224,7 +231,7 @@
                                     <option value="O-">O-</option>
                                                 <%
                                                 break;
-                                            case "\"A \"":
+                                            case "A+":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -241,7 +248,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"A-\"":
+                                            case "A-":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -258,7 +265,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"B\"":
+                                            case "B":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -275,7 +282,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"B \"":
+                                            case "B+":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -292,7 +299,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"B-\"":
+                                            case "B-":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -309,7 +316,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"AB\"":
+                                            case "AB":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -326,7 +333,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"AB \"":
+                                            case "AB+":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -343,7 +350,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"AB-\"":
+                                            case "AB-":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -360,7 +367,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"O\"":
+                                            case "O":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -377,7 +384,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"O \"":
+                                            case "O+":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
@@ -394,7 +401,7 @@
                                     <option value="O-">O-</option>
                                             <%
                                                 break;
-                                            case "\"O-\"":
+                                            case "O-":
                                             %>
                                     <option value="Seleccionar">Seleccionar</option>
                                     <option value="A">A</option>
