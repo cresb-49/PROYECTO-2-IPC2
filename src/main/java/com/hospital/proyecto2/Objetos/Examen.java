@@ -44,7 +44,7 @@ public class Examen {
      * Retorna si el examen necesita orden
      * @return 
      */
-    public boolean isOrden() {
+    public Boolean isOrden() {
         return orden;
     }
     /**

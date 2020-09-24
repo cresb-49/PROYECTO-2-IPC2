@@ -90,5 +90,41 @@ public class ConvercionesVariables {
         }
         return resultado;
     }
+    /**
+     * Introduce el dia en string y lo devuelve de una forma corregia lunes = Lunes o LuNes=Lunes
+     * @param dia
+     * @return 
+     */
+    public String arregloDiaSemana(String dia){
+        String resultado=null;
+        dia=dia.toLowerCase();
+        switch(dia){
+            case "lunes":
+                resultado="Lunes";
+                break;
+            case "martes":
+                resultado="Martes";
+                break;
+            case "miercoles":
+                resultado="Miercoles";
+                break;
+            case "jueves":
+                resultado="Jueves";
+                break;
+            case "viernes":
+                resultado="Viernes";
+                break;
+            case "sabado":
+                resultado="Sabado";
+                break;
+            case "domingo":
+                resultado="Domingo";
+                break;
+            default:
+                resultado=null;
+                break;
+        }
+        return resultado;
+    }
 }
 

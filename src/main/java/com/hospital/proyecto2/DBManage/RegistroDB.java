@@ -168,9 +168,36 @@ public class RegistroDB {
             //
             preSt.executeUpdate();
             preSt.close();
+            //Registro de la especialidades del doctor
+            respuesta = this.registroEspecialidadDoctor(doctor);
         } catch (Exception e) {
             respuesta = "Medico: " + doctor.getNombre() + " codigo: " + doctor.getCodigo() + " " + e.getMessage();
             System.out.println(respuesta);
+        }
+        return respuesta;
+    }
+
+    /**
+     * REGISTRO DE ESPECIALIDAD DE DOCTOR EN BASE DE DATOS
+     *
+     * @param doctor
+     * @return
+     */
+    public String registroEspecialidadDoctor(Doctor doctor) {
+        String respuesta = "";
+        String query = "INSERT INTO ESPECIALIDAD_MEDICO (nombre, MEDICO_codigo) values (?,?)";
+        for (String especialidad : doctor.getEspecialidad()) {
+            try (PreparedStatement preSt = conexion.prepareStatement(query)) {
+                //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+                preSt.setString(1, especialidad);
+                preSt.setString(2, doctor.getCodigo());
+                //
+                preSt.executeUpdate();
+                preSt.close();
+            } catch (Exception e) {
+                respuesta = "Medico: " + doctor.getNombre() + " codigo: " + doctor.getCodigo() + " Especialidad: " + especialidad + " " + e.getMessage();
+                System.out.println(respuesta);
+            }
         }
         return respuesta;
     }
@@ -197,6 +224,12 @@ public class RegistroDB {
         return respuesta;
     }
 
+    /**
+     * REGISTRO DE LOS LABORATORISTA DEL HOSPITAL
+     *
+     * @param laboratorista
+     * @return
+     */
     public String registroLaboratorista(Laboratorista laboratorista) {
         String respuesta = "";
         String query = "INSERT INTO LABORATORISTA (codigo, dpi, email, inicio_labores, nombre, numero_registro, telefono, tipo_examen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -216,9 +249,35 @@ public class RegistroDB {
             //
             preSt.executeUpdate();
             preSt.close();
+            respuesta = this.registroDiasLaboratorista(laboratorista);
         } catch (Exception e) {
             respuesta = "Laboratorista: " + laboratorista.getNombre() + " codigo: " + laboratorista.getCodigo() + " " + e.getMessage();
             System.out.println(respuesta);
+        }
+        return respuesta;
+    }
+
+    /**
+     * REGISTRO DE LOS DIAS DE TRABAJO DEL LABORATORISTA
+     *
+     * @param laboratorista
+     * @return
+     */
+    public String registroDiasLaboratorista(Laboratorista laboratorista) {
+        String respuesta = "";
+        String query = "INSERT INTO DIAS_TRABAJO (dia, LABORATORISTA_codigo) values (?,?);";
+        for (String dia : laboratorista.getDias()) {
+            try (PreparedStatement preSt = conexion.prepareStatement(query)) {
+                //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+                preSt.setString(1, dia);
+                preSt.setString(2, laboratorista.getCodigo());
+                //
+                preSt.executeUpdate();
+                preSt.close();
+            } catch (Exception e) {
+                respuesta = "Laboratorista: " + laboratorista.getNombre() + " codigo: " + laboratorista.getCodigo() + " Dia: " + dia + " " + e.getMessage();
+                System.out.println(respuesta);
+            }
         }
         return respuesta;
     }
@@ -268,13 +327,124 @@ public class RegistroDB {
             preSt.executeUpdate();
             preSt.close();
         } catch (Exception e) {
-            respuesta = "Reporte codigo: " + reporte.getCodigo()+" " + e.getMessage();
+            respuesta = "Reporte codigo: " + reporte.getCodigo() + " " + e.getMessage();
             System.out.println(respuesta);
         }
         return respuesta;
 
     }
 
+    public String registroCita(Cita cita, String tipo) {
+        String respuesta = "";
+        String query = "";
+        if (tipo.equals("exportado")) {
+            query = "INSERT INTO CITA (codigo, fecha, hora, MEDICO_codigo, PACIENTE_codigo, especialidad) VALUES (?,?,?,?,?,?)";
+        }
+        if (tipo.equals("nuevo")) {
+            query = "INSERT INTO CITA (fecha, hora, MEDICO_codigo, PACIENTE_codigo, especialidad) VALUES (?,?,?,?,?)";
+        }
+
+        //Asignacion de los datos de la variables
+        try (PreparedStatement preSt = conexion.prepareStatement(query)) {
+            if (tipo.equals("exportado")) {
+                //Verificacion de la informacion de entrada
+                this.verificacion.verificarCitaEsportada(cita);
+                //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+                preSt.setLong(1, cita.getCodigo());
+                preSt.setDate(2, cita.getFecha());
+                preSt.setTime(3, cita.getHora());
+                preSt.setString(4, cita.getCodigoMedico());
+                preSt.setLong(5, cita.getCodigoPaciente());
+                preSt.setString(6, cita.getEspecialidad());
+            }
+            if (tipo.equals("nuevo")) {
+                //Verificacion de la informacion de entrada
+                this.verificacion.verificarCitaCreada(cita);
+                //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+                preSt.setDate(1, cita.getFecha());
+                preSt.setTime(2, cita.getHora());
+                preSt.setString(3, cita.getCodigoMedico());
+                preSt.setLong(4, cita.getCodigoPaciente());
+                preSt.setString(5, cita.getEspecialidad());
+            }
+            //
+            preSt.executeUpdate();
+            preSt.close();
+        } catch (Exception e) {
+            respuesta = "Cita codigo: " + cita.getCodigo() + " Medico: " + cita.getCodigoMedico() + " " + e.getMessage();
+            System.out.println(respuesta);
+        }
+        return respuesta;
+    }
+    /**
+     * REGISTRO DEL TIPO DE CONSULTAS QUE HAY EN EL HOSPITAL
+     * @param consulta
+     * @return 
+     */
+    public String registroConsulta(Consulta consulta) {
+        String respuesta = "";
+        String query = "INSERT INTO CONSULTA (nombre, costo) VALUES (?,?)";
+        try (PreparedStatement preSt = conexion.prepareStatement(query)) {
+            //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+            this.verificacion.verificarConsulta(consulta);
+            preSt.setString(1, consulta.getTipo());
+            preSt.setDouble(2, consulta.getCosto());
+            //
+            preSt.executeUpdate();
+            preSt.close();
+        } catch (Exception e) {
+            respuesta = "Consulta Nombre: " + consulta.getTipo() + " " + e.getMessage();
+            System.out.println(respuesta);
+        }
+        return respuesta;
+    }
+    /**
+     * REGISTRO DEL TIPO DE EXAMENES QUE SUE PUEDEN REALIZAR EN EL HOSPITAL
+     * @param examen
+     * @param tipo
+     * @return 
+     */
+    public String registroExamen(Examen examen, String tipo){
+        String respuesta = "";
+        String query="";
+        if (tipo.equals("exportado")) {
+            query = "INSERT INTO EXAMEN (codigo, nombre, orden, descripcion, costo, tipo_informe) VALUES (?,?,?,?,?,?)";
+        }
+        if (tipo.equals("nuevo")) {
+            query = "INSERT INTO EXAMEN (nombre, orden, descripcion, costo, tipo_informe) VALUES (?,?,?,?,?)";
+        }
+        try (PreparedStatement preSt = conexion.prepareStatement(query)) {
+            //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+            if (tipo.equals("exportado")) {
+                //Verificacion de la informacion de entrada
+                this.verificacion.verificarExamenExportado(examen);
+                //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+                preSt.setLong(1, examen.getCodigo());
+                preSt.setString(2, examen.getNombre());
+                preSt.setBoolean(3, examen.isOrden());
+                preSt.setString(4, examen.getDescripcion());
+                preSt.setDouble(5, examen.getCosto());
+                preSt.setString(6, examen.getInforme());
+            }
+            if (tipo.equals("nuevo")) {
+                //Verificacion de la informacion de entrada
+                this.verificacion.verificarExamenCreado(examen);
+                //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+                preSt.setString(1, examen.getNombre());
+                preSt.setBoolean(2, examen.isOrden());
+                preSt.setString(3, examen.getDescripcion());
+                preSt.setDouble(4, examen.getCosto());
+                preSt.setString(5, examen.getInforme());
+            }
+            //
+            preSt.executeUpdate();
+            preSt.close();
+        } catch (Exception e) {
+            respuesta = "Examen Nombre: " + examen.getNombre()+ " " + e.getMessage();
+            System.out.println(respuesta);
+        }
+        return respuesta;
+    }
     /**
      * METODO DE INTROUCCION DE DATOS DEL HOSPITAL EN LA BASE DE DATOS
      *
@@ -332,6 +502,24 @@ public class RegistroDB {
         for (Reporte reporte : hospital.getReportes()) {
             resultado = registroReporte(reporte, "exportado");
             if (!resultado.equals("")) {
+                errores.add(resultado);
+            }
+        }
+        for (Cita cita : hospital.getCitas()) {
+            resultado = registroCita(cita, "exportado");
+            if (!resultado.equals("")) {
+                errores.add(resultado);
+            }
+        }
+        for (Consulta consulta : hospital.getConsultas()) {
+            resultado = registroConsulta(consulta);
+            if (!resultado.equals("")) {
+                errores.add(resultado);
+            }
+        }
+        for(Examen examen: hospital.getExamenes()){
+            resultado = registroExamen(examen, "exportado");
+            if(!resultado.equals("")){
                 errores.add(resultado);
             }
         }

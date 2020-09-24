@@ -135,7 +135,6 @@ CREATE TABLE IF NOT EXISTS CITA(
     codigo INT AUTO_INCREMENT NOT NULL ,
     fecha DATE NOT NULL ,
     hora TIME NOT NULL ,
-    estado TINYINT NOT NULL ,
     MEDICO_codigo VARCHAR (45) NOT NULL ,
     PACIENTE_codigo INT NOT NULL ,
     especialidad VARCHAR (45),

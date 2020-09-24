@@ -109,7 +109,7 @@ public class HospitalHandler extends DefaultHandler{
             case "DIA":
                 if(objeto instanceof Laboratorista){
                     Laboratorista lab = (Laboratorista) objeto;
-                    lab.agregarDia(buffer.toString());
+                    lab.agregarDia(this.conv.arregloDiaSemana(buffer.toString()));
                 }
                 break;
             case "SEXO":
