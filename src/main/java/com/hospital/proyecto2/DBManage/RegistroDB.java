@@ -7,8 +7,6 @@ package com.hospital.proyecto2.DBManage;
 
 import com.hospital.proyecto2.Objetos.*;
 import com.hospital.proyecto2.VerificacionContenido.VerificarContenido;
-import com.hospital.proyecto2.exepcionesDePrograma.AtributosIncompletos;
-import com.hospital.proyecto2.exepcionesDePrograma.RegistroDuplicado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
