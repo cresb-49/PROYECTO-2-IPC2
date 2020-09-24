@@ -1,5 +1,6 @@
 package com.hospital.proyecto2.DBManage;
 
+import com.hospital.proyecto2.Objetos.*;
 import com.hospital.proyecto2.exepcionesDePrograma.RegistroDuplicado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -135,5 +136,25 @@ public class ConsultasDB {
         }catch(Exception e){
         }
         return "";
+    }
+    public Examen obtenerExamen(String codigo){
+        Examen examen=null;
+        String consulta="";
+        consulta="SELECT * FROM EXAMEN WHERE codigo=?";
+        try(PreparedStatement preSt = conexion.prepareStatement(consulta)){
+            preSt.setString(1,codigo);
+            try(ResultSet result = preSt.executeQuery()){
+                while (result.next()) {
+                    examen.setCodigo(result.getLong("codigo"));
+                    examen.setNombre(result.getString("nombre"));
+                    examen.setOrden(result.getBoolean("orden"));
+                    examen.setDescripcion(result.getString("descripcion"));
+                    examen.setCosto(result.getDouble("costo"));
+                    examen.setInforme(result.getNString("tipo_informe"));
+                }
+            }
+        } catch (Exception e) {
+        }
+        return examen;
     }
 }
