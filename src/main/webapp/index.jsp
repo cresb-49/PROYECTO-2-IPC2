@@ -49,9 +49,19 @@
                 <div class="container col-md-4">
                     <br>
                     <%
+                        String error=request.getParameter("errorInicio");
+                        if(error!=null){
+                    %>
+                    <div class="container alert alert-danger">
+                        <%
+                            out.write(error);
+                        %>
+                    </div>
+                    <%
+                        }
                         if(resultado){
                     %>
-                    <form action="ManejoDeCuentas/acountProcess.jsp" method="post" onsubmit="return validarLogin()">
+                    <form action="RegistroUsuario" method="post" onsubmit="return validarLogin()">
                         <h2>Inicio sesion</h2>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>

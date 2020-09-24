@@ -5,8 +5,8 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Reporte {
-    private String codigo;
-    private String codigoPaciente;
+    private Long codigo;
+    private Long codigoPaciente;
     private String codigoMedico;
     private String informeMedico;
     private Date fecha;
@@ -19,28 +19,28 @@ public class Reporte {
      * Retorna el codigo de reporte
      * @return 
      */
-    public String getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
     /**
      * Asigna el codigo de reporte
      * @param codigo 
      */
-    public void setCodigo(String codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
     /**
      * Retorne ale codigo del paciente
      * @return 
      */
-    public String getCodigoPaciente() {
+    public Long getCodigoPaciente() {
         return codigoPaciente;
     }
     /**
      * Asigna el codigo del paciente
      * @param codigoPaciente 
      */
-    public void setCodigoPaciente(String codigoPaciente) {
+    public void setCodigoPaciente(Long codigoPaciente) {
         this.codigoPaciente = codigoPaciente;
     }
     /**

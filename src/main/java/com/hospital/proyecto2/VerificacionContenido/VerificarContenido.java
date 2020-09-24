@@ -197,6 +197,49 @@ public class VerificarContenido {
         }
         
     }
+    public void verificarReporteExportado(Reporte reporte) throws AtributosIncompletos{
+        if(!this.validarCodigoNumerico(reporte.getCodigo())){
+            throw new AtributosIncompletos("El reporte debe tener un codigo numerico");
+        }
+        if(!this.validarCodigoPaciente(reporte.getCodigoPaciente())){
+            throw new AtributosIncompletos("El reporte tiene codigo de paciente no valido debe ser un codigo numerico");
+        }
+        if(!this.validarCodigoDoctor(reporte.getCodigoMedico())){
+            throw new AtributosIncompletos("El reporte tiene codigo de medico no valido debe ser MED-XXX");
+        }
+        if(reporte.getInformeMedico()==null){
+            throw new AtributosIncompletos("El reporte no tiene informe medico");
+        }
+        if(reporte.getInformeMedico().equals("")){
+            throw new AtributosIncompletos("El reporte no tiene informe medico");
+        }
+        if(reporte.getFecha()==null){
+            throw new AtributosIncompletos("El reporte no tiene fecha de generacion correcta");
+        }
+        if(reporte.getHora()==null){
+            throw new AtributosIncompletos("El reporte no tiene gora de generacion correcta");
+        }
+    }
+    public void verificarReporteCreado(Reporte reporte) throws AtributosIncompletos{
+        if(!this.validarCodigoPaciente(reporte.getCodigoPaciente())){
+            throw new AtributosIncompletos("El reporte tiene codigo de paciente no valido debe ser un codigo numerico");
+        }
+        if(!this.validarCodigoDoctor(reporte.getCodigoMedico())){
+            throw new AtributosIncompletos("El reporte tiene codigo de medico no valido debe ser MED-XXX");
+        }
+        if(reporte.getInformeMedico()==null){
+            throw new AtributosIncompletos("El reporte no tiene informe medico");
+        }
+        if(reporte.getInformeMedico().equals("")){
+            throw new AtributosIncompletos("El reporte no tiene informe medico");
+        }
+        if(reporte.getFecha()==null){
+            throw new AtributosIncompletos("El reporte no tiene fecha de generacion correcta");
+        }
+        if(reporte.getHora()==null){
+            throw new AtributosIncompletos("El reporte no tiene gora de generacion correcta");
+        }
+    }
     private boolean verificarPassword(String password){
         if(password==null){
             return false;
@@ -243,6 +286,13 @@ public class VerificarContenido {
             return  codigo.matches("^[M][E][D][-][0-9]+$");
         }
         
+    }
+    private boolean validarCodigoNumerico(Long codigo){
+        if(codigo==null){
+            return false;
+        }else{
+            return  codigo.toString().matches("^[0-9]+$");
+        }
     }
     private boolean validarCodigoPaciente(Long codigo){
         if(codigo==null){

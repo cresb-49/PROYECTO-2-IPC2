@@ -9,12 +9,6 @@
         <link rel="stylesheet" href="../css/estilos.css"/>
     </head>
     <body>
-        <header>
-            <div class="container">
-                <h1>HOSPITAL</h1>
-                <h2>EDITAR DOCTOR</h2>
-            </div>
-        </header>
         <br>
         <div class="container">
             <br>
@@ -22,7 +16,7 @@
         </div>
         <div class="container">
             <br>
-            <form class="form-inline">
+            <form class="form-inline" action="#">
                 <label class="control-label col-md-2" for="codeDoctor">Codigo Doctor: </label>
                 <div class="form-group">
                     <input class="form-control" id="codeDoctor" type="text" name="codeDoctorText" placeholder="codigo doctor">
@@ -90,11 +84,9 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="espeDoctor">Especialidad: </label><br>
-                        <select class="form-control" name="Especialidad" id="espeDoctor">
-                            <!---<option value="volvo">Volvo</option>---->
+                        <select class="form-control" name="Especialidad" id="espeDoctor">                            
                             
                         </select>
-                            <!---<input class="form-control" id="espeDoctor" type="text" name="espeDoctorText" placeholder="Especialidad">--->
                     </div>
                     <div class="form-group">
                         <label class="control-label">Horario:</label>
@@ -113,11 +105,6 @@
             </section>
         </div>
         <br>
-        <footer>
-            <div class="container">
-                <h3>© HOSPITAL 2020</h3>
-            </div>
-        </footer>
         <script src="../js/jquery-3.5.1.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
     </body>

@@ -241,7 +241,7 @@ public class HospitalHandler extends DefaultHandler{
         }
         if(objeto instanceof Reporte){
             Reporte reporte = (Reporte) objeto;
-            reporte.setCodigo(buffer.toString());
+            reporte.setCodigo(this.conv.stringToLong(buffer.toString()));
         }
         if(objeto instanceof Resultado){
             Resultado resultado= (Resultado) objeto;
@@ -367,7 +367,7 @@ public class HospitalHandler extends DefaultHandler{
     private void asignarPaciente() {
         if(objeto instanceof Reporte){
             Reporte reporte = (Reporte) objeto;
-            reporte.setCodigoPaciente(buffer.toString());
+            reporte.setCodigoPaciente(this.conv.stringToLong(buffer.toString()));
         }
         if(objeto instanceof Resultado){
             Resultado resultado= (Resultado) objeto;

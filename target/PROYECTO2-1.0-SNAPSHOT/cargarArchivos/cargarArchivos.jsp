@@ -74,7 +74,7 @@
                 if(!errores.isEmpty()){
                 %>
                 <div class="container">
-                    <h1>ERROR EN LA CARGA EN BASE DE DATOS</h1>
+                    <h1>ERROR EN LA CARGA DE DATOS EN LA BASE DE DATOS</h1>
                     <div class="container alert alert-danger" role="alert">
                         <%
                             for(String error :errores){
@@ -101,7 +101,7 @@
             } catch (Exception e) {
                 %>
                 <div class="container">
-                    <h1>ERROR EN LA CARGA EN BASE DE DATOS</h1>
+                    <h1>ERROR EN LA CARGA DE DATOS EN LA BASE DE DATOS</h1>
                     <div class="container alert alert-danger" role="alert"><%out.write(e.getMessage());%></div>
                     <a class="btn btn-danger" href="../index.jsp">Regresar al inicio</a>
                 </div>
