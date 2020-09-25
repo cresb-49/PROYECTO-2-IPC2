@@ -29,9 +29,9 @@
         <%
             //Path principal de guardado de archivos
             //Directorio linux
-            //String srcGuardado="/home/benjamin/Documentos/IPC 2/PROYECTO 2/Almacenamiento/tmp";
+            String srcGuardado="/home/benjamin/Documentos/IPC 2/PROYECTO 2/Almacenamiento/tmp";
             //Directorio windows
-            String srcGuardado="D:/Escritorio/Temporal Proyecto 2/tmp";
+            //String srcGuardado="D:/Escritorio/Temporal Proyecto 2/tmp";
             //Generacion de la escritura del archivo
             DiskFileItemFactory itemFactory =  new DiskFileItemFactory();
             //Tamaño maximo de archivos de recepcion
