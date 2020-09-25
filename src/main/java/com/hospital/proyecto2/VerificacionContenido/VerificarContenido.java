@@ -364,7 +364,27 @@ public class VerificarContenido {
             throw new AtributosIncompletos("El examen no tiene un formato de informe valido");
         }
     }
-
+    /**
+     * PARA REALIZAR LA VERIFICACION DE LA INFORMACION EN NECESARIO SABER A QUE TIPO DE EXAMEN HACEMOS REFERENCIA
+     * @param resultado
+     * @param examen 
+     */
+    public void verificarResultadoExportado(Resultado resultado, Examen examen){
+        
+    }
+    /**
+     * PARA REALIZAR LA VERIFICACION DE LA INFORMACION EN NECESARIO SABER A QUE TIPO DE EXAMEN HACEMOS REFERENCIA
+     * @param resultado
+     * @param examen 
+     */
+    public void verificarResultadoCreado(Resultado resultado, Examen examen){
+        
+    }
+    /**
+     * VERIFICA SI HAY UNA PASSWORD EXISTENTE
+     * @param password
+     * @return 
+     */
     private boolean verificarPassword(String password) {
         if (password == null) {
             return false;

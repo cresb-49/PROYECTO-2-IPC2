@@ -137,6 +137,11 @@ public class ConsultasDB {
         }
         return "";
     }
+    /**
+     * Obtiene un examen segun codigo del mismo examen
+     * @param codigo
+     * @return 
+     */
     public Examen obtenerExamen(String codigo){
         Examen examen=null;
         String consulta="";
@@ -154,6 +159,7 @@ public class ConsultasDB {
                 }
             }
         } catch (Exception e) {
+            System.out.println("Error en busqueda de examen "+e.getMessage());
         }
         return examen;
     }
