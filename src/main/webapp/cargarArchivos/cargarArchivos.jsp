@@ -1,3 +1,4 @@
+<%@page import="com.hospital.proyecto2.Objetos.Archivo"%>
 <%@page import="java.io.InputStream"%>
 <%@page import="com.hospital.proyecto2.DBManage.RegistroDB"%>
 <%@page import="com.hospital.proyecto2.DBManage.ConnectionDB"%>
@@ -42,24 +43,43 @@
             ServletFileUpload upload = new ServletFileUpload(itemFactory);
             //Partes del archivo
             List<FileItem> partes = upload.parseRequest(request);
-            
+            ArrayList<Archivo> archivos = new ArrayList<Archivo>();
             try {
                 //Escritura de todos los archivos en la entrada de la pagina WEB
                 for(FileItem items: partes){
                     System.out.println(items.getName());
-                    File file = new File(srcGuardado, items.getName());
+                    archivos.add(new Archivo(items.getName(),items.getInputStream()));
+                    //File file = new File(srcGuardado, items.getName());
+                    
                     //items.write(file);
                 }                
+                for(Archivo arch : archivos){
+                    System.out.println(arch.toString());
+                }
                 //Lista de errores al moemnto de la carga del archivo
                 ArrayList<String> errores = new ArrayList<>();
                 //Manejo de la conexion de la base de datos
                 ConnectionDB conexion = new ConnectionDB();
                 //Parte de registro para la base de datos
                 RegistroDB registro = new RegistroDB(conexion.getConexion());
-                //Directorio nonde se guardan los archivos que recibio la pagina web
-                File directorio = new File(srcGuardado);
                 //Generacion del objeto hospital
                 Hospital hospital=null;
+                
+                
+                if(!archivos.isEmpty()){
+                    for(Archivo arch: archivos){
+                        if(arch.getNombre().endsWith(".xml")){
+                            lecturaXML lectura = new lecturaXML();
+                            hospital=lectura.leer(arch.getDatos());
+                            errores=registro.trasladarDatosHospital(hospital,archivos);
+                        }
+                    }
+                }
+                
+                /*
+                //Directorio nonde se guardan los archivos que recibio la pagina web
+                File directorio = new File(srcGuardado);
+                
                 //Comprobacion si el direcorio existe
                 if(directorio.exists()){
                     //Cargamos los archivos en el programa
@@ -76,6 +96,8 @@
                         f.delete();
                     }
                 }
+                */
+                
                 if(!errores.isEmpty()){
                 %>
                 <div class="container">

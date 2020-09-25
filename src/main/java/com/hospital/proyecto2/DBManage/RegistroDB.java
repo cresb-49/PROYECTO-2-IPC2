@@ -457,7 +457,7 @@ public class RegistroDB {
      * @param hospital
      * @return
      */
-    public ArrayList<String> trasladarDatosHospital(Hospital hospital, File[] archivos) throws FileNotFoundException {
+    public ArrayList<String> trasladarDatosHospital(Hospital hospital,ArrayList<Archivo> archivos) throws FileNotFoundException {
         ///Buffer de resultados de cada registro
         String resultado = "";
         ArrayList<String> errores = new ArrayList<>();
@@ -529,11 +529,12 @@ public class RegistroDB {
                 errores.add(resultado);
             }
         }
-        ArrayList<File> docs = new ArrayList<>();
-        for(File file: archivos){
-            if(!file.getName().endsWith(".xml")){
+        
+        ArrayList<Archivo> docs = new ArrayList<>();
+        for(Archivo file: archivos){
+            if(!file.getNombre().endsWith(".xml")){
                 docs.add(file);
-                System.out.println("Nombre archivo: "+file.getName());
+                System.out.println("Nombre archivo: "+file.getNombre());
             }
         }
         System.out.println(errores.toString());

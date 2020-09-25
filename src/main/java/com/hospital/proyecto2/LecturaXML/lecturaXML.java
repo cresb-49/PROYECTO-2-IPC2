@@ -3,6 +3,7 @@ package com.hospital.proyecto2.LecturaXML;
 import com.hospital.proyecto2.Objetos.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -24,11 +25,12 @@ public class lecturaXML {
      * @throws SAXException
      * @throws IOException 
      */
-    public Hospital leer(File archivo) throws ParserConfigurationException, SAXException, IOException{
+    public Hospital leer(InputStream archivo) throws ParserConfigurationException, SAXException, IOException{
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = saxParserFactory.newSAXParser();
             //File archivo = new File("/home/benjamin/Escritorio/data.xml");
             HospitalHandler handler = new HospitalHandler();
+            
             saxParser.parse(archivo, handler);
 
             ArrayList<Admin> admins = handler.getAdmins();

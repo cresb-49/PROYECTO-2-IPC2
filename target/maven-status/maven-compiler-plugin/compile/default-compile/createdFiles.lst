@@ -2,6 +2,7 @@ com/hospital/proyecto2/DBManage/ConnectionDB.class
 com/hospital/proyecto2/Objetos/Consulta.class
 com/hospital/proyecto2/Objetos/Laboratorista.class
 com/hospital/proyecto2/Objetos/Examen.class
+com/hospital/PROYECTO2/Servlets/modificacionDatos.class
 com/hospital/proyecto2/Objetos/Reporte.class
 com/hospital/proyecto2/LecturaXML/lecturaXML.class
 com/hospital/proyecto2/Objetos/Doctor.class
@@ -18,5 +19,6 @@ com/hospital/proyecto2/exepcionesDePrograma/FormatoArchivoIncorrecto.class
 com/hospital/proyecto2/Objetos/Cita.class
 com/hospital/proyecto2/Objetos/Admin.class
 com/hospital/proyecto2/Objetos/Resultado.class
+com/hospital/proyecto2/Objetos/Archivo.class
 com/hospital/proyecto2/Objetos/Hospital.class
 com/hospital/proyecto2/exepcionesDePrograma/RegistroDuplicado.class
