@@ -7,6 +7,12 @@ package com.hospital.proyecto2.DBManage;
 
 import com.hospital.proyecto2.Objetos.*;
 import com.hospital.proyecto2.VerificacionContenido.VerificarContenido;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -451,7 +457,7 @@ public class RegistroDB {
      * @param hospital
      * @return
      */
-    public ArrayList<String> trasladarDatosHospital(Hospital hospital) {
+    public ArrayList<String> trasladarDatosHospital(Hospital hospital, File[] archivos) throws FileNotFoundException {
         ///Buffer de resultados de cada registro
         String resultado = "";
         ArrayList<String> errores = new ArrayList<>();
@@ -521,6 +527,13 @@ public class RegistroDB {
             resultado = registroExamen(examen, "exportado");
             if(!resultado.equals("")){
                 errores.add(resultado);
+            }
+        }
+        ArrayList<File> docs = new ArrayList<>();
+        for(File file: archivos){
+            if(!file.getName().endsWith(".xml")){
+                docs.add(file);
+                System.out.println("Nombre archivo: "+file.getName());
             }
         }
         System.out.println(errores.toString());

@@ -63,7 +63,7 @@
                         if(f.getName().endsWith(".xml")){
                             lecturaXML lectura = new lecturaXML();
                             hospital=lectura.leer(f);
-                            errores=registro.trasladarDatosHospital(hospital);
+                            errores=registro.trasladarDatosHospital(hospital,ficheros);
                         }
                     }
                     //Eliminacion de los datos temporales

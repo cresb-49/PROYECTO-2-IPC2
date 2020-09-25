@@ -1,6 +1,7 @@
 
 package com.hospital.proyecto2.Objetos;
 
+import java.io.*;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -11,15 +12,16 @@ public class Resultado {
     private Long codigoExamen;
     private String codigoMedico;
     private String codigoLaboratorista;
-    private String orden;
-    private String informe;
+    private String NombreOrden;
+    private InputStream orden;
+    private String NombreInforme;
+    private InputStream informe;
     private Date fecha;
     private Time hora;
     
     public Resultado(){
         
     }
-
     public Long getCodigo() {
         return codigo;
     }
@@ -52,22 +54,37 @@ public class Resultado {
         this.codigoLaboratorista = codigoLaboratorista;
     }
 
-    public String getOrden() {
+    public String getNombreOrden() {
+        return NombreOrden;
+    }
+
+    public void setNombreOrden(String Nombreorden) {
+        this.NombreOrden = Nombreorden;
+    }
+
+    public InputStream getOrden() {
         return orden;
     }
 
-    public void setOrden(String orden) {
+    public void setOrden(InputStream orden) {
         this.orden = orden;
     }
 
-    public String getInforme() {
+    public String getNombreInforme() {
+        return NombreInforme;
+    }
+
+    public void setNombreInforme(String Nombreinforme) {
+        this.NombreInforme = Nombreinforme;
+    }
+
+    public InputStream getInforme() {
         return informe;
     }
 
-    public void setInforme(String informe) {
+    public void setInforme(InputStream informe) {
         this.informe = informe;
     }
-
     public Date getFecha() {
         return fecha;
     }
