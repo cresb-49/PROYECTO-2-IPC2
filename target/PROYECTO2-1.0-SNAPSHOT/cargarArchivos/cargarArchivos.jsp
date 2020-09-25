@@ -1,3 +1,4 @@
+<%@page import="java.io.InputStream"%>
 <%@page import="com.hospital.proyecto2.DBManage.RegistroDB"%>
 <%@page import="com.hospital.proyecto2.DBManage.ConnectionDB"%>
 <%@page import="com.hospital.proyecto2.Objetos.Hospital"%>
@@ -27,13 +28,16 @@
         </header>
         <%
             //Path principal de guardado de archivos
-            String srcGuardado="/home/benjamin/Documentos/IPC 2/PROYECTO 2/Almacenamiento/tmp";
+            //Directorio linux
+            //String srcGuardado="/home/benjamin/Documentos/IPC 2/PROYECTO 2/Almacenamiento/tmp";
+            //Directorio windows
+            String srcGuardado="D:/Escritorio/Temporal Proyecto 2/tmp";
             //Generacion de la escritura del archivo
             DiskFileItemFactory itemFactory =  new DiskFileItemFactory();
             //Tamaño maximo de archivos de recepcion
             itemFactory.setSizeThreshold(1024);
             //Asignacion del repositorio de escritura del archivo xml
-            itemFactory.setRepository(new File(srcGuardado));
+            //itemFactory.setRepository(new File(srcGuardado));
             //Asignacion de carga del archivo xml
             ServletFileUpload upload = new ServletFileUpload(itemFactory);
             //Partes del archivo
@@ -42,8 +46,9 @@
             try {
                 //Escritura de todos los archivos en la entrada de la pagina WEB
                 for(FileItem items: partes){
+                    System.out.println(items.getName());
                     File file = new File(srcGuardado, items.getName());
-                    items.write(file);
+                    //items.write(file);
                 }                
                 //Lista de errores al moemnto de la carga del archivo
                 ArrayList<String> errores = new ArrayList<>();
