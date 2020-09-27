@@ -61,7 +61,7 @@
                         }
                         if(resultado){
                     %>
-                    <form action="RegistroUsuario" method="post" onsubmit="return validarLogin()">
+                    <form action="RegistroUsuario" method="post">
                         <h2>Inicio sesion</h2>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>

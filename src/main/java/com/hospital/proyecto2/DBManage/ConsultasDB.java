@@ -145,17 +145,16 @@ public class ConsultasDB {
     public Examen obtenerExamen(String codigo){
         Examen examen=null;
         String consulta="";
-        consulta="SELECT * FROM EXAMEN WHERE codigo=?";
+        consulta="SELECT nombre,orden,descripcion,costo,tipo_informe FROM examen WHERE codigo = ?";
         try(PreparedStatement preSt = conexion.prepareStatement(consulta)){
             preSt.setString(1,codigo);
             try(ResultSet result = preSt.executeQuery()){
                 while (result.next()) {
-                    examen.setCodigo(result.getLong("codigo"));
-                    examen.setNombre(result.getString("nombre"));
-                    examen.setOrden(result.getBoolean("orden"));
-                    examen.setDescripcion(result.getString("descripcion"));
-                    examen.setCosto(result.getDouble("costo"));
-                    examen.setInforme(result.getNString("tipo_informe"));
+                    examen.setNombre(result.getString(1));
+                    examen.setOrden(result.getBoolean(2));
+                    examen.setDescripcion(result.getString(3));
+                    examen.setCosto(result.getDouble(4));
+                    examen.setInforme(result.getNString(5));
                 }
             }
         } catch (Exception e) {

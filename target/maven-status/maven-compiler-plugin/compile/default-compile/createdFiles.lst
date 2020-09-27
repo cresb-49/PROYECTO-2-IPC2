@@ -19,7 +19,7 @@ com\hospital\proyecto2\Objetos\Paciente.class
 com\hospital\proyecto2\Objetos\Examen.class
 com\hospital\proyecto2\Objetos\Resultado.class
 com\hospital\proyecto2\Objetos\Doctor.class
+com\hospital\proyecto2\Servlets\RegistroUsuario.class
 com\hospital\proyecto2\paths\obtenerNombreArchivo.class
-com\hospital\proyecto2\Servlets\RegistroUsusario.class
 com\hospital\proyecto2\Objetos\Reporte.class
 com\hospital\proyecto2\exepcionesDePrograma\AtributosIncompletos.class

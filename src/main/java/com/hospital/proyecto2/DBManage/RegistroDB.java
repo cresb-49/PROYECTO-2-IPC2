@@ -382,10 +382,12 @@ public class RegistroDB {
         }
         return respuesta;
     }
+
     /**
      * REGISTRO DEL TIPO DE CONSULTAS QUE HAY EN EL HOSPITAL
+     *
      * @param consulta
-     * @return 
+     * @return
      */
     public String registroConsulta(Consulta consulta) {
         String respuesta = "";
@@ -404,15 +406,17 @@ public class RegistroDB {
         }
         return respuesta;
     }
+
     /**
      * REGISTRO DEL TIPO DE EXAMENES QUE SUE PUEDEN REALIZAR EN EL HOSPITAL
+     *
      * @param examen
      * @param tipo
-     * @return 
+     * @return
      */
-    public String registroExamen(Examen examen, String tipo){
+    public String registroExamen(Examen examen, String tipo) {
         String respuesta = "";
-        String query="";
+        String query = "";
         if (tipo.equals("exportado")) {
             query = "INSERT INTO EXAMEN (codigo, nombre, orden, descripcion, costo, tipo_informe) VALUES (?,?,?,?,?,?)";
         }
@@ -446,18 +450,78 @@ public class RegistroDB {
             preSt.executeUpdate();
             preSt.close();
         } catch (Exception e) {
-            respuesta = "Examen Nombre: " + examen.getNombre()+ " " + e.getMessage();
+            respuesta = "Examen Nombre: " + examen.getNombre() + " " + e.getMessage();
             System.out.println(respuesta);
         }
         return respuesta;
     }
+    
+    /**
+     * REGISTRO DE LOS RESULTADO EMITIDOS POR EL HOSPITAL
+     *
+     * @param resultado
+     * @param tipo
+     * @return
+     */
+    public String registroResultado(Resultado resultado,String tipo) {
+        String respuesta = "";
+        String query = "";
+        if (tipo.equals("exportado")) {
+            query = "INSERT INTO RESULTADO (codigo, EXAMEN_codigo, fecha, hora, informe, LABORATORISTA_codigo, MEDICO_codigo, nombre_informe, nombre_orden, orden, PACIENTE_codigo) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        }
+        if (tipo.equals("nuevo")) {
+            query = "INSERT INTO RESULTADO (EXAMEN_codigo, fecha, hora, informe, LABORATORISTA_codigo, MEDICO_codigo, nombre_informe, nombre_orden, orden, PACIENTE_codigo) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        }
+        try (PreparedStatement preSt = conexion.prepareStatement(query)) {
+            //realiza la busqueda del examen de referencia en el resultado
+            Examen examen = this.consulta.obtenerExamen(resultado.getCodigoExamen().toString());
+            System.out.println(examen.toString());
+            //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+            if (tipo.equals("exportado")) {
+                //Verificacion de la informacion de entrada
+                this.verificacion.verificarResultadoExportado(resultado, examen);
+                //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
+                preSt.setLong(1,resultado.getCodigo());
+                preSt.setDate(2,resultado.getFecha());
+                preSt.setTime(3,resultado.getHora());
+                preSt.setBlob(4,resultado.getInforme().getDatos());
+                preSt.setString(5,resultado.getCodigoLaboratorista());
+                preSt.setString(6,resultado.getCodigoMedico());
+                preSt.setString(7,resultado.getInforme().getNombre());
+                preSt.setString(8,resultado.getOrden().getNombre());
+                preSt.setBlob(9,resultado.getOrden().getDatos());
+                preSt.setLong(10,resultado.getCodigoPaciente());
+            }
+            if (tipo.equals("nuevo")) {
+                //Verificacion de la informacion de entrada
+                this.verificacion.verificarResultadoCreado(resultado, examen);
+                preSt.setDate(1,resultado.getFecha());
+                preSt.setTime(2,resultado.getHora());
+                preSt.setBlob(3,resultado.getInforme().getDatos());
+                preSt.setString(4,resultado.getCodigoLaboratorista());
+                preSt.setString(5,resultado.getCodigoMedico());
+                preSt.setString(6,resultado.getInforme().getNombre());
+                preSt.setString(7,resultado.getOrden().getNombre());
+                preSt.setBlob(8,resultado.getOrden().getDatos());
+                preSt.setLong(9,resultado.getCodigoPaciente());
+            }
+            //
+            preSt.executeUpdate();
+            preSt.close();
+        } catch (Exception e) {
+            respuesta = "Resultado Codigo: "+resultado.getCodigo()+ " Paciente: "+resultado.getCodigoPaciente()+" Medico: "+resultado.getCodigoMedico() + " Laboratorista: "+resultado.getCodigoLaboratorista()+" "+ e.getMessage();
+            System.out.println(respuesta);
+        }
+        return respuesta;
+    }
+
     /**
      * METODO DE INTROUCCION DE DATOS DEL HOSPITAL EN LA BASE DE DATOS
      *
      * @param hospital
      * @return
      */
-    public ArrayList<String> trasladarDatosHospital(Hospital hospital,ArrayList<Archivo> archivos) throws FileNotFoundException {
+    public ArrayList<String> trasladarDatosHospital(Hospital hospital, ArrayList<Archivo> archivos) throws FileNotFoundException {
         ///Buffer de resultados de cada registro
         String resultado = "";
         ArrayList<String> errores = new ArrayList<>();
@@ -523,18 +587,34 @@ public class RegistroDB {
                 errores.add(resultado);
             }
         }
-        for(Examen examen: hospital.getExamenes()){
+        for (Examen examen : hospital.getExamenes()) {
             resultado = registroExamen(examen, "exportado");
-            if(!resultado.equals("")){
+            if (!resultado.equals("")) {
                 errores.add(resultado);
             }
         }
-        
+
         ArrayList<Archivo> docs = new ArrayList<>();
-        for(Archivo file: archivos){
-            if(!file.getNombre().endsWith(".xml")){
+        for (Archivo file : archivos) {
+            if (!file.getNombre().endsWith(".xml")) {
                 docs.add(file);
-                System.out.println("Nombre archivo: "+file.getNombre());
+            }
+        }
+
+        for (Archivo doc : docs) {
+            for (Resultado res : hospital.getResultados()) {
+                if (res.getNombreInforme().equals(doc.getNombre())) {
+                    res.setInforme(doc);
+                }
+                if (res.getNombreOrden().equals(doc.getNombre())) {
+                    res.setOrden(doc);
+                }
+            }
+        }
+        for (Resultado res : hospital.getResultados()) {
+            resultado = registroResultado(res, "exportado");
+            if (!resultado.equals("")) {
+                errores.add(resultado);
             }
         }
         System.out.println(errores.toString());

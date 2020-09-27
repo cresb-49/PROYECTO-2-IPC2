@@ -368,17 +368,76 @@ public class VerificarContenido {
      * PARA REALIZAR LA VERIFICACION DE LA INFORMACION EN NECESARIO SABER A QUE TIPO DE EXAMEN HACEMOS REFERENCIA
      * @param resultado
      * @param examen 
+     * @throws com.hospital.proyecto2.exepcionesDePrograma.AtributosIncompletos 
      */
-    public void verificarResultadoExportado(Resultado resultado, Examen examen){
-        
+    public void verificarResultadoExportado(Resultado resultado, Examen examen) throws AtributosIncompletos{
+        if(examen==null){
+            throw new AtributosIncompletos("No existe un examen en el hospital con el codigo enlazado al resultado");
+        }
+        if(!this.validarCodigoNumerico(resultado.getCodigo())){
+            throw new AtributosIncompletos("El Resultado no tine un codigo de referencia no valido solo deben ser numeros");
+        }
+        if(!this.validarCodigoPaciente(resultado.getCodigo())){
+            throw new AtributosIncompletos("El resultado no tiene un codigo de paciente no valido solo deben ser numeros");
+        }
+        if(!this.validarCodigoDoctor(resultado.getCodigoMedico())){
+            throw new AtributosIncompletos("El resultado no tiene un codigo de medico no valido debe ser MED-XXX");
+        }
+        if(!this.validarCodigoNumerico(resultado.getCodigoExamen())){
+            throw new AtributosIncompletos("El resultado tiene un codigo de examen no valido deben ser solo numeros");
+        }
+        if(!this.validarCodigoLabora(resultado.getCodigoLaboratorista())){
+            throw new AtributosIncompletos("El resultado no tine un codigo de laboratorista valido debe ser de la forma LAB-XXX");
+        }
+        if(examen.isOrden()==true&& resultado.getOrden().getDatos()==null){
+            throw new AtributosIncompletos("El resultado segun el tipo de examen requiere orden");
+        }
+        if(examen.isOrden()==false && resultado.getOrden().getDatos()!=null){
+            throw new AtributosIncompletos("El resultado segun el tipo de examen no necesita orden");
+        }
+        if(resultado.getInforme().getDatos()==null){
+            throw new AtributosIncompletos("El resultado no tiene un informe");
+        }
+        if(resultado.getFecha()==null){
+            throw new AtributosIncompletos("El resultado no tiene asignada un fecha");
+        }
+        if(resultado.getHora()==null){
+            throw new AtributosIncompletos("El resultado no tiene asignado un hora");
+        }
     }
     /**
      * PARA REALIZAR LA VERIFICACION DE LA INFORMACION EN NECESARIO SABER A QUE TIPO DE EXAMEN HACEMOS REFERENCIA
      * @param resultado
      * @param examen 
      */
-    public void verificarResultadoCreado(Resultado resultado, Examen examen){
-        
+    public void verificarResultadoCreado(Resultado resultado, Examen examen) throws AtributosIncompletos{
+        if(!this.validarCodigoPaciente(resultado.getCodigo())){
+            throw new AtributosIncompletos("El resultado no tiene un codigo de paciente no valido solo deben ser numeros");
+        }
+        if(!this.validarCodigoDoctor(resultado.getCodigoMedico())){
+            throw new AtributosIncompletos("El resultado no tiene un codigo de medico no valido debe ser MED-XXX");
+        }
+        if(!this.validarCodigoNumerico(resultado.getCodigoExamen())){
+            throw new AtributosIncompletos("El resultado tiene un codigo de examen no valido deben ser solo numeros");
+        }
+        if(!this.validarCodigoLabora(resultado.getCodigoLaboratorista())){
+            throw new AtributosIncompletos("El resultado no tine un codigo de laboratorista valido debe ser de la forma LAB-XXX");
+        }
+        if(examen.isOrden()==true&& resultado.getOrden().getDatos()==null){
+            throw new AtributosIncompletos("El resultado segun el tipo de examen requiere orden");
+        }
+        if(examen.isOrden()==false && resultado.getOrden().getDatos()!=null){
+            throw new AtributosIncompletos("El resultado segun el tipo de examen no necesita orden");
+        }
+        if(resultado.getInforme().getDatos()==null){
+            throw new AtributosIncompletos("El resultado no tiene un informe");
+        }
+        if(resultado.getFecha()==null){
+            throw new AtributosIncompletos("El resultado no tiene asignada un fecha");
+        }
+        if(resultado.getHora()==null){
+            throw new AtributosIncompletos("El resultado no tiene asignado un hora");
+        }
     }
     /**
      * VERIFICA SI HAY UNA PASSWORD EXISTENTE

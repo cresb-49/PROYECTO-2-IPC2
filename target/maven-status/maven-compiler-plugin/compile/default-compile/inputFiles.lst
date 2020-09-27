@@ -6,6 +6,7 @@ D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PRO
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\exepcionesDePrograma\AtributosIncompletos.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Objetos\Reporte.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\LecturaXML\lecturaXML.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Servlets\RegistroUsuario.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Objetos\Hospital.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Servlets\modificacionDatos.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Objetos\Archivo.java
@@ -17,7 +18,6 @@ D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PRO
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Objetos\Paciente.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\DBManage\ConnectionDB.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\exepcionesDePrograma\FormatoArchivoIncorrecto.java
-D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Servlets\RegistroUsusario.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Objetos\Doctor.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\Objetos\Admin.java
 D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\hospital\PROYECTO2\DBManage\RegistroDB.java
