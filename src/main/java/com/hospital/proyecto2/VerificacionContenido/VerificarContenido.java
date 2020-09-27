@@ -398,6 +398,12 @@ public class VerificarContenido {
         if(resultado.getInforme().getDatos()==null){
             throw new AtributosIncompletos("El resultado no tiene un informe");
         }
+        if(!resultado.getNombreInforme().endsWith(".pdf")&&examen.getInforme().equals("PDF")){
+            throw new AtributosIncompletos("El resultado necesita de un informe en formato PDF");
+        }
+        if(resultado.getNombreInforme().endsWith(".pdf")&&examen.getInforme().equals("IMG")){
+            throw new AtributosIncompletos("El resultado necesita de un informe en formato IMG");
+        }
         if(resultado.getFecha()==null){
             throw new AtributosIncompletos("El resultado no tiene asignada un fecha");
         }
@@ -428,6 +434,12 @@ public class VerificarContenido {
         }
         if(examen.isOrden()==false && resultado.getOrden().getDatos()!=null){
             throw new AtributosIncompletos("El resultado segun el tipo de examen no necesita orden");
+        }
+        if(!resultado.getNombreInforme().endsWith(".pdf")&&examen.getInforme().equals("PDF")){
+            throw new AtributosIncompletos("El resultado necesita de un informe en formato PDF");
+        }
+        if(resultado.getNombreInforme().endsWith(".pdf")&&examen.getInforme().equals("IMG")){
+            throw new AtributosIncompletos("El resultado necesita de un informe en formato IMG");
         }
         if(resultado.getInforme().getDatos()==null){
             throw new AtributosIncompletos("El resultado no tiene un informe");

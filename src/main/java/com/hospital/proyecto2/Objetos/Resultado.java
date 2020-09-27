@@ -13,9 +13,9 @@ public class Resultado {
     private String codigoMedico;
     private String codigoLaboratorista;
     private String NombreOrden;
-    private Archivo orden;
+    private Archivo orden = new Archivo();
     private String NombreInforme;
-    private Archivo informe;
+    private Archivo informe = new Archivo();
     private Date fecha;
     private Time hora;
     

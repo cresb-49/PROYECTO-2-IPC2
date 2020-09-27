@@ -145,21 +145,25 @@ public class ConsultasDB {
     public Examen obtenerExamen(String codigo){
         Examen examen=null;
         String consulta="";
-        consulta="SELECT nombre,orden,descripcion,costo,tipo_informe FROM examen WHERE codigo = ?";
-        try(PreparedStatement preSt = conexion.prepareStatement(consulta)){
-            preSt.setString(1,codigo);
-            try(ResultSet result = preSt.executeQuery()){
-                while (result.next()) {
-                    examen.setNombre(result.getString(1));
-                    examen.setOrden(result.getBoolean(2));
-                    examen.setDescripcion(result.getString(3));
-                    examen.setCosto(result.getDouble(4));
-                    examen.setInforme(result.getNString(5));
+        consulta="SELECT nombre,orden,descripcion,costo,tipo_informe FROM EXAMEN WHERE codigo = ?";
+        try (PreparedStatement preSt = conexion.prepareStatement(consulta)) {
+                preSt.setString(1, codigo);
+                try (ResultSet result = preSt.executeQuery()){
+                    examen=new Examen();
+                    while (result.next()) {
+                        examen.setCodigo(Long.parseLong(codigo));
+                        examen.setNombre(result.getString(1));
+                        examen.setOrden(result.getBoolean(2));
+                        examen.setDescripcion(result.getString(3));
+                        examen.setCosto(result.getDouble(4));
+                        examen.setInforme(result.getString(5));
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error en busqueda de examen"+e.getMessage());
                 }
+            }catch(Exception e){
+                System.out.println("Error en busqueda de examen"+e.getMessage());
             }
-        } catch (Exception e) {
-            System.out.println("Error en busqueda de examen "+e.getMessage());
-        }
         return examen;
     }
 }

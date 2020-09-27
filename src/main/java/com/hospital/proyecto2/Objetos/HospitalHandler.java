@@ -355,7 +355,7 @@ public class HospitalHandler extends DefaultHandler {
     private void asignarInforme() {
         if (objeto instanceof Examen) {
             Examen examen = (Examen) objeto;
-            examen.setInforme(buffer.toString());
+            examen.setInforme(this.conv.ajusteFormatos(buffer.toString()));
         }
         if (objeto instanceof Reporte) {
             Reporte reporte = (Reporte) objeto;

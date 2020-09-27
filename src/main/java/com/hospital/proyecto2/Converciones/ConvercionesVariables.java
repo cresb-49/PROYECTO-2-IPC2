@@ -91,6 +91,21 @@ public class ConvercionesVariables {
         return resultado;
     }
     /**
+     * AJUSTA EL NOMBRE DEL FORMATO PARA EL GUARDADO EN LA BASE DE DATOS CON UN ESTANDAR
+     * @param formato
+     * @return 
+     */
+    public String ajusteFormatos(String formato){
+        String temp = formato.toLowerCase();
+        if(temp.equals("pdf")){
+            return "PDF";
+        }
+        if(temp.equals("img")){
+            return "IMG";
+        }
+        return "NULL";
+    }
+    /**
      * Introduce el dia en string y lo devuelve de una forma corregia lunes = Lunes o LuNes=Lunes
      * @param dia
      * @return 

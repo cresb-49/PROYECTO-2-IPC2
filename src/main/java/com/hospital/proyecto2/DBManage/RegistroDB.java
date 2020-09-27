@@ -455,7 +455,7 @@ public class RegistroDB {
         }
         return respuesta;
     }
-    
+
     /**
      * REGISTRO DE LOS RESULTADO EMITIDOS POR EL HOSPITAL
      *
@@ -463,53 +463,61 @@ public class RegistroDB {
      * @param tipo
      * @return
      */
-    public String registroResultado(Resultado resultado,String tipo) {
+    public String registroResultado(Resultado resultado, String tipo) {
         String respuesta = "";
         String query = "";
+        Examen examen =null;
         if (tipo.equals("exportado")) {
-            query = "INSERT INTO RESULTADO (codigo, EXAMEN_codigo, fecha, hora, informe, LABORATORISTA_codigo, MEDICO_codigo, nombre_informe, nombre_orden, orden, PACIENTE_codigo) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            query = "INSERT INTO RESULTADO (codigo, fecha, hora, nombre_orden, orden, nombre_informe, informe, MEDICO_codigo, LABORATORISTA_codigo, PACIENTE_codigo, EXAMEN_codigo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         }
         if (tipo.equals("nuevo")) {
-            query = "INSERT INTO RESULTADO (EXAMEN_codigo, fecha, hora, informe, LABORATORISTA_codigo, MEDICO_codigo, nombre_informe, nombre_orden, orden, PACIENTE_codigo) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            query = "INSERT INTO RESULTADO (fecha, hora, nombre_orden, orden, nombre_informe, informe, MEDICO_codigo, LABORATORISTA_codigo, PACIENTE_codigo, EXAMEN_codigo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         }
         try (PreparedStatement preSt = conexion.prepareStatement(query)) {
             //realiza la busqueda del examen de referencia en el resultado
-            Examen examen = this.consulta.obtenerExamen(resultado.getCodigoExamen().toString());
-            System.out.println(examen.toString());
+             examen= this.consulta.obtenerExamen(resultado.getCodigoExamen().toString());
             //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
             if (tipo.equals("exportado")) {
                 //Verificacion de la informacion de entrada
-                this.verificacion.verificarResultadoExportado(resultado, examen);
+                //this.verificacion.verificarResultadoExportado(resultado, examen);
                 //ASIGNACION DE VALORES PARA REALIZAR EL REGISTRO
-                preSt.setLong(1,resultado.getCodigo());
-                preSt.setDate(2,resultado.getFecha());
-                preSt.setTime(3,resultado.getHora());
-                preSt.setBlob(4,resultado.getInforme().getDatos());
-                preSt.setString(5,resultado.getCodigoLaboratorista());
-                preSt.setString(6,resultado.getCodigoMedico());
-                preSt.setString(7,resultado.getInforme().getNombre());
-                preSt.setString(8,resultado.getOrden().getNombre());
-                preSt.setBlob(9,resultado.getOrden().getDatos());
-                preSt.setLong(10,resultado.getCodigoPaciente());
+                this.verificacion.verificarResultadoExportado(resultado, examen);
+                
+                preSt.setLong(1, resultado.getCodigo());
+                preSt.setDate(2, resultado.getFecha());
+                preSt.setTime(3, resultado.getHora());
+                //-----------------------------------------------
+
+                preSt.setString(4, resultado.getNombreOrden());
+                preSt.setBlob(5, resultado.getOrden().getDatos());
+
+                //-----------------------------------------------
+                preSt.setString(6, resultado.getNombreInforme());
+                preSt.setBlob(7, resultado.getInforme().getDatos());
+                preSt.setString(8, resultado.getCodigoMedico());
+                preSt.setString(9, resultado.getCodigoLaboratorista());
+                preSt.setLong(10, resultado.getCodigoPaciente());
+                preSt.setLong(11, resultado.getCodigoExamen());
             }
             if (tipo.equals("nuevo")) {
                 //Verificacion de la informacion de entrada
                 this.verificacion.verificarResultadoCreado(resultado, examen);
-                preSt.setDate(1,resultado.getFecha());
-                preSt.setTime(2,resultado.getHora());
-                preSt.setBlob(3,resultado.getInforme().getDatos());
-                preSt.setString(4,resultado.getCodigoLaboratorista());
-                preSt.setString(5,resultado.getCodigoMedico());
-                preSt.setString(6,resultado.getInforme().getNombre());
-                preSt.setString(7,resultado.getOrden().getNombre());
-                preSt.setBlob(8,resultado.getOrden().getDatos());
-                preSt.setLong(9,resultado.getCodigoPaciente());
+                preSt.setDate(1, resultado.getFecha());
+                preSt.setTime(2, resultado.getHora());
+                preSt.setString(3, resultado.getNombreOrden());
+                preSt.setBlob(4, resultado.getOrden().getDatos());
+                preSt.setString(5, resultado.getNombreInforme());
+                preSt.setBlob(6, resultado.getInforme().getDatos());
+                preSt.setString(7, resultado.getCodigoMedico());
+                preSt.setString(8, resultado.getCodigoLaboratorista());
+                preSt.setLong(9, resultado.getCodigoPaciente());
+                preSt.setLong(10, resultado.getCodigoExamen());
             }
             //
             preSt.executeUpdate();
             preSt.close();
         } catch (Exception e) {
-            respuesta = "Resultado Codigo: "+resultado.getCodigo()+ " Paciente: "+resultado.getCodigoPaciente()+" Medico: "+resultado.getCodigoMedico() + " Laboratorista: "+resultado.getCodigoLaboratorista()+" "+ e.getMessage();
+            respuesta = "Resultado Codigo: "+resultado.getCodigo() + " Examen: "+resultado.getCodigoExamen()+ " " + e.getMessage();
             System.out.println(respuesta);
         }
         return respuesta;
