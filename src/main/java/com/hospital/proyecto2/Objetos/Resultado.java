@@ -13,9 +13,9 @@ public class Resultado {
     private String codigoMedico;
     private String codigoLaboratorista;
     private String NombreOrden;
-    private InputStream orden;
+    private Archivo orden;
     private String NombreInforme;
-    private InputStream informe;
+    private Archivo informe;
     private Date fecha;
     private Time hora;
     
@@ -62,11 +62,11 @@ public class Resultado {
         this.NombreOrden = Nombreorden;
     }
 
-    public InputStream getOrden() {
+    public Archivo getOrden() {
         return orden;
     }
 
-    public void setOrden(InputStream orden) {
+    public void setOrden(Archivo orden) {
         this.orden = orden;
     }
 
@@ -78,11 +78,11 @@ public class Resultado {
         this.NombreInforme = Nombreinforme;
     }
 
-    public InputStream getInforme() {
+    public Archivo getInforme() {
         return informe;
     }
 
-    public void setInforme(InputStream informe) {
+    public void setInforme(Archivo informe) {
         this.informe = informe;
     }
     public Date getFecha() {
