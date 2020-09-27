@@ -1,3 +1,4 @@
+<%@page import="com.sun.tools.javac.resources.compiler"%>
 <%@page import="com.hospital.proyecto2.Objetos.Archivo"%>
 <%@page import="java.io.InputStream"%>
 <%@page import="com.hospital.proyecto2.DBManage.RegistroDB"%>
@@ -11,6 +12,7 @@
 <%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
 <%@page import="java.io.File"%>
 <%@page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
+<%@page import="com.hospital.proyecto2.paths.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,11 +30,8 @@
             </div>
         </header>
         <%
-            //Path principal de guardado de archivos
-            //Directorio linux
-            //String srcGuardado="/home/benjamin/Documentos/IPC 2/PROYECTO 2/Almacenamiento/tmp";
-            //Directorio windows
-            //String srcGuardado="D:/Escritorio/Temporal Proyecto 2/tmp";
+            //Clase utilizada principalmente en windows para la obtencion del nombre de un archivo partiendo de una direccion
+            obtenerNombreArchivo obNombre = new obtenerNombreArchivo();
             //Generacion de la escritura del archivo
             DiskFileItemFactory itemFactory =  new DiskFileItemFactory();
             //Tamaño maximo de archivos de recepcion
@@ -47,11 +46,8 @@
             try {
                 //Escritura de todos los archivos en la entrada de la pagina WEB
                 for(FileItem items: partes){
-                    System.out.println(items.getName());
-                    archivos.add(new Archivo(items.getName(),items.getInputStream()));
-                    //File file = new File(srcGuardado, items.getName());
-                    
-                    //items.write(file);
+                    System.out.println(obNombre.obtenerNombre(items.getName()));
+                    archivos.add(new Archivo(obNombre.obtenerNombre(items.getName()),items.getInputStream()));
                 }                
                 for(Archivo arch : archivos){
                     System.out.println(arch.toString());
@@ -75,29 +71,6 @@
                         }
                     }
                 }
-                
-                /*
-                //Directorio nonde se guardan los archivos que recibio la pagina web
-                File directorio = new File(srcGuardado);
-                
-                //Comprobacion si el direcorio existe
-                if(directorio.exists()){
-                    //Cargamos los archivos en el programa
-                    File[] ficheros = directorio.listFiles();
-                    for(File f:ficheros){
-                        if(f.getName().endsWith(".xml")){
-                            lecturaXML lectura = new lecturaXML();
-                            hospital=lectura.leer(f);
-                            errores=registro.trasladarDatosHospital(hospital,ficheros);
-                        }
-                    }
-                    //Eliminacion de los datos temporales
-                    for(File f:ficheros){
-                        f.delete();
-                    }
-                }
-                */
-                
                 if(!errores.isEmpty()){
                 %>
                 <div class="container">
