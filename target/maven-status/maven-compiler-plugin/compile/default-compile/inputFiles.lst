@@ -1,25 +1,25 @@
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Paths\obtenerNombreArchivo.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Hospital.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\DBManage\ConsultasDB.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Conversiones\ConvercionesVariables.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\DBManage\ConnectionDB.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\ExepcionesDePrograma\RegistroDuplicado.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Paciente.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\VerificarContenido\VerificarContenido.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Servlets\RegistroUsuario.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\DBManage\RegistroDB.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\HospitalHandler.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Laboratorista.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Reporte.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Archivo.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\ExepcionesDePrograma\AtributosIncompletos.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Admin.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Resultado.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Trabajador.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Doctor.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Cita.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Servlets\modificacionDatos.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\ExepcionesDePrograma\FormatoArchivoIncorrecto.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\LecturaXML\lecturaXML.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Consulta.java
-D:\Documentos\NetBeansProjects\PROYECTO2v2\src\main\java\com\mycompany\proyecto2v2\Objetos\Examen.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Reporte.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Cita.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Hospital.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Paths\obtenerNombreArchivo.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\HospitalHandler.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\DBManage\ConsultasDB.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Laboratorista.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\LecturaXML\lecturaXML.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Doctor.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\ExepcionesDePrograma\FormatoArchivoIncorrecto.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Servlets\RegistroUsuario.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Consulta.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\ExepcionesDePrograma\AtributosIncompletos.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Examen.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Trabajador.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Servlets\modificacionDatos.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Conversiones\ConvercionesVariables.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Archivo.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\DBManage\RegistroDB.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\VerificarContenido\VerificarContenido.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\DBManage\ConnectionDB.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\ExepcionesDePrograma\RegistroDuplicado.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Paciente.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Admin.java
+D:\Documentos\PROYECTOS IPC2 2020\PROYECTO-2-IPC2\src\main\java\com\mycompany\proyecto2v2\Objetos\Resultado.java
