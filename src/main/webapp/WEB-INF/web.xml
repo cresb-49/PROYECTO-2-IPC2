@@ -9,4 +9,12 @@
             30
         </session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <servlet-class>com.hospital.PROYECTO2.Servlets.RegistroUsuario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <url-pattern>/RegistroUsuario</url-pattern>
+    </servlet-mapping>
 </web-app>
